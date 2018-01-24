@@ -1,0 +1,35 @@
+{% extends 'layouts/application.html' %}
+
+{% block content %}
+<div class="container-fluid">
+  {% include "_cart/cart-breadcrumb.html" %}
+</div>
+<div class="divider"></div>
+<div class="container-fluid container-max-width">
+  <div class="cart-container">
+    <h1 class="mb-4 mb-sm-6">Корзина</h1>
+    <div class="row">
+      <div class="col-12 col-lg-8 order-lg-1">
+        <div class="card-items pb-2">
+          {% include "_cart/catalog-card-cart.html" %}
+          {% include "_cart/catalog-card-cart.html" %}
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-auto order-lg-3">
+        {% include "_cart/cart-promo-code.html" %}
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3 order-lg-2">
+        {% include "_cart/cart-total.html" %}
+      </div>
+    </div>
+  </div>
+  <div id="end-cart"></div>
+  <div class="divider-large d-sm-none d-md-block"></div>
+  {% include "_cart/product-releated.html" %}
+  <div class="divider-large"></div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{% include "_cart/cart-scripts.html" %}
+{% endblock %}

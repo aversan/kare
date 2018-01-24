@@ -1,0 +1,47 @@
+.checkout-col-right {
+  .form-group {
+    margin-left: 40px;
+
+    @include media-breakpoint-down(xs) {
+      margin-left: 0;
+    }
+  }
+}
+
+.checkout-container-max-width {
+  &-medium {
+    max-width: 440px;
+  }
+
+  &-large {
+    max-width: 640px;
+  }
+
+  &-xlarge {
+    max-width: 700px;
+  }
+}
+
+.checkout-order-btn,
+.checkout-sms-btn {
+  @include media-breakpoint-down(xs) {
+    display: block;
+    width: 100%;
+  }
+}
+
+.checkout-sms-box {
+  background-color: theme-color("gray-light");
+}
+
+.checkout-total {
+  position: relative;
+}
+
+.checkout-paid-label {
+  @include media-breakpoint-down(xs) {
+    position: absolute;
+    left: 100%;
+    top: 0;
+  }
+}

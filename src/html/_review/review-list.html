@@ -1,0 +1,15 @@
+<div class="review-list pt-4 pb-5">
+	{% for i in [1,2,3] -%}
+	{% if loop.index <= 3 %}
+	<div class="review-item">
+		<div class="review-item__meta d-flex align-items-baseline flex-nowrap mb-2">
+			<span class="text-gray typo-sm text-truncate">Маргарита</span>
+			<span class="text-gray typo-xs text-nowrap ml-3">24 сентября 2017</span>
+		</div>
+		<div class="review-item__text">
+			Придаст изюминку вашему дому и станет приятным дополнением в интерьере!!! Я вся такая довольная
+		</div>
+	</div>
+	{% endif %}
+	{%- endfor %}
+</div>

@@ -1,0 +1,9 @@
+<div class="bordered-block__title bordered-block__title--mail">Подписка на рассылку</div>
+	<div class="custom-checkbox">
+		{% for userProps in result.ORDER_PROP.USER_PROPS_Y if userProps.CODE == 'SUBSCRIBE' %}
+			<input type="checkbox" name="subscribe" id="subscribe" {{ userProps.CHECKED == 'Y' ? 'checked' }}>
+			<label for="subscribe">
+				Я хочу подписаться на рассылку и быть в курсе свежих и ярких тенденций в мире KARE!
+			</label>
+		{% endfor %}
+	</div>

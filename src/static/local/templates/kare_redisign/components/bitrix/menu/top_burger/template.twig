@@ -1,0 +1,32 @@
+<ul class="menu-catalog__list">
+    {% for item in result %}
+        <li class="menu-catalog__list-item">
+            {% set isParent = item.IS_PARENT %}
+            <a href="{{ item.LINK }}"
+               class="menu-catalog__list-link{% if isParent %} js-menu-catalog-show-dropdown{% endif %}">
+                {{ item.TEXT }}
+                {% if isParent %}
+                <svg class="menu-catalog__arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 5">
+                    <path stroke-miterlimit="10" d="M6.5.8l-3 3-3-3"/>
+                </svg>
+
+            </a>{% endif %}
+            {% if isParent %}
+                <ul class="menu-catalog__dropdown">
+                    {% for child in item.CHILD %}
+                        <li class="menu-catalog__dropdown-item">
+                            <a href="{{ child.LINK }}" class="menu-catalog__dropdown-link">{{ child.TEXT }}</a>
+                        </li>
+                    {% endfor %}
+                    <button class="menu-catalog_button"></button>
+                </ul>
+            {% endif %}
+            
+        </li>
+    {% endfor %}
+    <li class="menu-catalog__list-item menu-catalog__list-item--action">
+        <a href="/action/" class="menu-catalog__list-link">{{ getMessage('MENU.TOP_BURGER:ACTIONS') }}</a>
+    </li>
+    <li class="menu-catalog__close js-menu-catalog-close"></li>
+    <li class="menu-catalog__top-menu"></li>
+</ul>

@@ -1,0 +1,23 @@
+.page-link {
+  text-transform: uppercase;
+  min-width: 2.5rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: .8125rem;
+  position: relative;
+
+  &_icon {
+    height: 2.5rem;
+
+    .icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+
+.page-item.disabled .page-link {
+  opacity: .6;
+}

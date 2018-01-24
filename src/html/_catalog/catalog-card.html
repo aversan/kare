@@ -1,0 +1,43 @@
+<article class="catalog-card catalog-list-card d-flex flex-column">
+  <span class="catalog-card__image-wrap d-block">
+    <img class="catalog-card__image" src="http://via.placeholder.com/220x220" alt="" title="" />
+  </span>
+  <div class="catalog-card__name mt-3">
+    <a class="catalog-card__link  text-gray-dark" href="#">Консоль Authentico, коллекция "Аутентичный" консоль Authentico, коллекция "Аутентичный"</a>
+  </div>
+  <div class="spacer"></div>
+  <div class="catalog-card__info d-flex  flex-column flex-sm-row flex-nowrap align-items-sm-center mt-2">
+    <div class="catalog-card__cost mr-sm-auto">
+      <div class="catalog-card__price">
+        <div class="price price_old h5 mb-0 text-truncate font-weight-normal text-muted">100 630 р.</div>
+        <div class="price h4 mb-0 text-truncate">32 630 р.</div>
+      </div>
+    </div>
+    <div class="catalog-button-group d-flex align-items-center js-catalog-buttons ml-sm-auto mt-2 mt-sm-0">
+      <span class="catalog-button-group__item">
+        <a title="Добавить в WishList" class="basket-button js-to-basket js-to-wish-btn " rel="nofollow" href="/ajax/item.php" data-item="16228" data-type="wish">
+          <span class="icon icon_md icon_like-black icon_black-muted">
+            {{ sprite('like-black') }}
+          </span>
+          <span class="icon icon_md icon_like-red">
+            {{ sprite('like-red') }}
+          </span>
+        </a>
+      </span>
+      <span class="catalog-button-group__item ml-3">
+        <a title="Перейти в корзину" class="basket-button basket-button_in-cart js-in-basket-btn hidden" rel="nofollow" href="/basket/" data-item="16228">
+          <span class="sr-only">В корзине</span>
+          <span class="icon icon_md icon_basket-red">
+            {{ sprite('basket-red') }}
+          </span>
+        </a>
+        <a title="Добавить в корзину" class="basket-button basket-button_to-cart js-to-basket js-to-basket-btn " rel="nofollow" href="/ajax/item.php" onclick="ga('send', 'event', 'Button1', 'Buttonclick12');" data-type="basket" data-item="16228">
+          <span class="sr-only">В корзину</span>
+          <span class="icon icon_md icon_basket-black icon_black-muted">
+            {{ sprite('basket-black') }}
+          </span>
+        </a>
+      </span>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,208 @@
+$drop-shadow: 0 2px 20px 0 rgba(20, 20, 20, 0.25);
+$drop-background: $white;
+$drop-color: $gray-700;
+$drop-arrow-size: 8px;
+$drop-radius: 0;
+
+.drop-element,
+.drop-element:after,
+.drop-element:before,
+.drop-element *,
+.drop-element *:after,
+.drop-element *:before {
+    box-sizing: border-box;
+}
+
+.drop-element {
+    position: absolute;
+    display: none;
+    transition: opacity .15s linear;
+    opacity: 0;
+}
+
+.drop-element.drop-open {
+    display: block;
+}
+
+.drop-element.drop-after-open {
+    opacity: 1;
+}
+
+.drop-element.drop-theme-arrows {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.drop-element.drop-theme-arrows .drop-content {
+    border-radius: $drop-radius;
+    position: relative;
+    font-family: inherit;
+    background: $drop-background;
+    color: $drop-color;
+    padding: 1rem;
+    transform: translateZ(0);
+    box-shadow: $drop-shadow;
+    // filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+}
+
+.drop-element.drop-theme-arrows .drop-content:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-width: $drop-arrow-size;
+    border-style: solid;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-bottom.drop-element-attached-center .drop-content {
+    margin-bottom: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-bottom.drop-element-attached-center .drop-content:before {
+    top: 100%;
+    left: 50%;
+    margin-left: -$drop-arrow-size;
+    border-top-color: $drop-background;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-top.drop-element-attached-center .drop-content {
+    margin-top: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-top.drop-element-attached-center .drop-content:before {
+    bottom: 100%;
+    left: 50%;
+    margin-left: -$drop-arrow-size;
+    border-bottom-color: $drop-background;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-right.drop-element-attached-middle .drop-content {
+    margin-right: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-right.drop-element-attached-middle .drop-content:before {
+    left: 100%;
+    top: 50%;
+    margin-top: -$drop-arrow-size;
+    border-left-color: $drop-background;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-left.drop-element-attached-middle .drop-content {
+    margin-left: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-left.drop-element-attached-middle .drop-content:before {
+    right: 100%;
+    top: 50%;
+    margin-top: -$drop-arrow-size;
+    border-right-color: $drop-background;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-top.drop-element-attached-left.drop-target-attached-bottom .drop-content {
+    margin-top: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-top.drop-element-attached-left.drop-target-attached-bottom .drop-content:before {
+    bottom: 100%;
+    left: $drop-arrow-size;
+    border-bottom-color: $drop-background;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-top.drop-element-attached-right.drop-target-attached-bottom .drop-content {
+    margin-top: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-top.drop-element-attached-right.drop-target-attached-bottom .drop-content:before {
+    bottom: 100%;
+    right: $drop-arrow-size;
+    border-bottom-color: $drop-background;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-bottom.drop-element-attached-left.drop-target-attached-top .drop-content {
+    margin-bottom: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-bottom.drop-element-attached-left.drop-target-attached-top .drop-content:before {
+    top: 100%;
+    left: $drop-arrow-size;
+    border-top-color: $drop-background;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-bottom.drop-element-attached-right.drop-target-attached-top .drop-content {
+    margin-bottom: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-bottom.drop-element-attached-right.drop-target-attached-top .drop-content:before {
+    top: 100%;
+    right: $drop-arrow-size;
+    border-top-color: $drop-background;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-top.drop-element-attached-right.drop-target-attached-left .drop-content {
+    margin-right: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-top.drop-element-attached-right.drop-target-attached-left .drop-content:before {
+    top: $drop-arrow-size;
+    left: 100%;
+    border-left-color: $drop-background;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-top.drop-element-attached-left.drop-target-attached-right .drop-content {
+    margin-left: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-top.drop-element-attached-left.drop-target-attached-right .drop-content:before {
+    top: $drop-arrow-size;
+    right: 100%;
+    border-right-color: $drop-background;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-bottom.drop-element-attached-right.drop-target-attached-left .drop-content {
+    margin-right: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-bottom.drop-element-attached-right.drop-target-attached-left .drop-content:before {
+    bottom: $drop-arrow-size;
+    left: 100%;
+    border-left-color: $drop-background;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-bottom.drop-element-attached-left.drop-target-attached-right .drop-content {
+    margin-left: $drop-arrow-size;
+}
+
+.drop-element.drop-theme-arrows.drop-element-attached-bottom.drop-element-attached-left.drop-target-attached-right .drop-content:before {
+    bottom: $drop-arrow-size;
+    right: 100%;
+    border-right-color: $drop-background;
+}
+
+.drop {
+  z-index: 500;
+}
+
+.drop-content {
+    display: none;
+    border-radius: $drop-radius;
+    position: relative;
+    font-family: inherit;
+    background: $drop-background;
+    color: $drop-color;
+    padding: 1rem;
+    transform: translateZ(0);
+    box-shadow: $drop-shadow;
+}
+
+.drop .drop-content {
+    display: block;
+}
+
+.drop_shipment {
+  &.drop-element.drop-theme-arrows .drop-content {
+    width: 17.5rem;
+    padding: .75rem 0;
+  }
+}

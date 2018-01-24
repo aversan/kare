@@ -1,0 +1,22 @@
+<div class="h6-title">Мы предлагаем следующие формы сотрудничества с KARE:</div>
+<div class="three-cols three-cols--wide cases">
+	{% if result.ITEMS | length > 0 %}
+		{% for item in result.ITEMS %}
+			{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+			{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+			{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+			<div id="{{ EDIT_ID }}">
+				<div class="case case--info">
+					<div class="case__title">{{ item.NAME }}</div>
+					<div class="case__pic bckg" style="background-image:url({{ item.PREVIEW_PICTURE.SRC }})">
+						<div class="case__desc">
+							<div class="case__subtitle">{{ item.PREVIEW_TEXT }}</div>
+							<span class="case__text">{{ item.DETAIL_TEXT }}</span>
+							<div class="case__ctrl"> <button data-case="{{ item.NAME }}" data-case-id="{{ item.ID }}" href="#rest-order" type="button" class="rounded-button js-case">оставить заявку</button></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+	{% endif %}
+</div>

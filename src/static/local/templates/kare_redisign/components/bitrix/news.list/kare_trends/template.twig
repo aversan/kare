@@ -1,0 +1,32 @@
+<div class="block-with-aside">
+	{% for item in result.ITEMS %}
+		{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+		{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+		{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+		{% if loop.first %}
+			<div class="block-with-aside__main" id="{{ EDIT_ID }}">
+				<div class="video-wrapper">
+					<iframe src="{{ item.PROPERTIES.LINK.VALUE}}" frameborder="0" allowfullscreen></iframe>
+				</div>
+				<div class="gray-big-title">{{ item.NAME }}</div>
+			</div>
+		{% else %}
+			{% if loop.index == 2 %}
+				<div class="block-with-aside__aside block-with-aside__aside--video">
+			{% endif %}
+				<div class="video-block" id="{{ EDIT_ID }}">
+					<div class="video-block_wrap">
+						<div class="video-wrapper">
+							<iframe src="{{ item.PROPERTIES.LINK.VALUE}}" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+					<div class="video-block_text">
+						<div class="gray-title">{{ item.NAME }}</div>
+					</div>
+				</div>
+			{% if loop.last %}
+				</div>
+			{% endif %}
+		{% endif %}
+	{% endfor %}
+</div>

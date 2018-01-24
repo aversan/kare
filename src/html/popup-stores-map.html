@@ -1,0 +1,14 @@
+{% extends 'layouts/application.html' %}
+
+{% block content %}
+  <div class="jqmOverlay" style="height: 100%; width: 100%; position: fixed; left: 0px; top: 0px; z-index: 2999; opacity: 0.5;"></div>
+{% endblock %}
+
+{% block popup %}
+	{% include "_popup/popup-stores-map.html" %}
+{% endblock %}
+
+{% block javascript %}
+  {% include "_cart/cart-scripts.html" %}
+{% endblock %}
+

@@ -1,0 +1,20 @@
+<h1 class="main-catalog__title">Новости</h1>
+<div class="articles">
+{% if params.NEWS_COUNT %}
+	{% for item in result.ITEMS %}
+		{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+		{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+		{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+		<a href="{{ item.DETAIL_PAGE_URL }}" class="articles__item" id="{{ EDIT_ID }}">
+			<div class="articles__pic" style="background-image:url({{ item.PREVIEW_PICTURE.src }});"></div>
+			<div class="articles__info">
+				<div class="articles__title">{{ item.NAME }}</div>
+				<div class="articles__preview">{{ item.PREVIEW_TEXT }}</div>
+			</div>
+		</a>
+	{% endfor %}
+	{% if params.DISPLAY_BOTTOM_PAGER %}
+		{{ result.NAV_STRING }}
+	{% endif %}
+{% endif %}
+</div>

@@ -1,0 +1,16 @@
+{% if result is not empty %}
+	<div class="b2b">
+		{% for item in result.ITEMS %}
+			{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+			{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+			{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+			{% if item.CODE == 'company' %}
+				<div id="{{ EDIT_ID }}" class="main-inner-banner-wrap">
+					<div class="main-inner-banner bckg" style="background-image: url({{ item.PREVIEW_PICTURE.SRC }})"></div>
+
+					<div class="bordered-white-block main-inner-banner-text">{{ item['~PREVIEW_TEXT'] }}</div>
+
+				</div>
+			{% endif %}
+		{% endfor %}
+{% endif %}

@@ -1,0 +1,43 @@
+{% extends 'layouts/application.html' %}
+
+{% block content %}
+<div class="container-fluid">
+  {% include "_product/product-breadcrumb.html" %}
+</div>
+<div class="divider"></div>
+<div class="container-fluid container-max-width">
+	{% include "_product/product-card-header-mobile.html" %}
+	<div class="divider-small d-md-none"></div>
+	<div class="row no-gutters">
+		<div class="col-xs-12 col-md-6 order-2">
+			<div class="divider d-md-none"></div>
+			{% include "_product/product-card-2.html" %}
+		</div>
+		<div class="col-xs-12 col-md-6 order-1">
+			{% include "_product/product-detail-slider.html" %}
+		</div>
+	</div>
+	<div class="divider-large"></div>
+	<div class="row no-gutters">
+		<div class="col-xs-12 col-md-6">
+			{% include "_product/product-description.html" %}
+			<div class="divider-large"></div>
+			{% include "_product/product-options.html" %}
+			<div class="divider-large"></div>
+			{% include "_product/product-reviews-empty.html" %}
+		</div>
+		<div class="col-xs-12 col-md-6">
+			{% include "_product/product-relative.html" %}
+			<div class="divider-large d-md-none"></div>
+			{% include "_product/product-relative-mobile.html" %}
+		</div>
+	</div>
+	<div class="divider-large"></div>
+	{% include "_product/product-viewed.html" %}
+	<div class="divider-large"></div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  {% include "_product/product-scripts.html" %}
+{% endblock %}

@@ -1,0 +1,30 @@
+<div class="jobs-block">
+	{% if result.ITEMS | length > 0 %}
+		{% for item in result.ITEMS %}
+			{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+			{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+			{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+			<div class="bordered-block" id="{{ EDIT_ID }}">
+				<div class="gray-title">{{ item.NAME }}</div>
+				<div class="narrow-text">
+					<p>{{ item.PREVIEW_TEXT }}</p>
+				</div>
+
+				<div class="hidden-block-collapsed narrow-text">
+					{% for property in item.DISPLAY_PROPERTIES %}
+						<div class="gray-light-title">{{ property.NAME }}:</div>
+						<ul class="colored-list">
+							{% for li in property.VALUE %}
+								<li>{{ li }}</li>
+							{% endfor %}
+						</ul>
+					{% endfor %}
+					<a href="#apply" class="butn btn-base js-job" data-job="{{ item.NAME }}" data-job-id="{{ item.ID }}">откликнуться</a>
+				</div>
+				<button type="button" class="inner-link inner-link--base toggle-btn"><span>Подробнее о вакансии</span><span>Скрыть подробности</span></button>
+			</div>
+		{% endfor %}
+	{% else %}
+		<span>К сожалению, в этом городе пока нет открытых вакансий</span>
+	{% endif %}
+</div>

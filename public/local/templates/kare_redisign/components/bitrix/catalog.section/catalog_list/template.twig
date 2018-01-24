@@ -1,0 +1,14 @@
+<ul class="alphabet-list">
+		{% for i in 0..20 %}
+			<li class="alphabet-list__item">
+				<span class="alphabet-list__letter">A</span>
+				<ul class="alphabet-product-names">
+					{% for i in 0..5 %}
+						<li class="alphabet-product-names__name">
+							<a href="#" class="alphabet-product-names__link">Adajio</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</li>
+		{% endfor %}
+</ul>

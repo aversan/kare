@@ -1,0 +1,38 @@
+<div class="bx_section bordered-block bordered-block--ind">
+	<div class="bordered-block__title bordered-block__title--person">Войти</div>
+	<div class="bordered-block__form">
+		{% if result.SHOW_ERRORS  == 'Y' %}
+			{{ ShowMessage(result.ERROR_MESSAGE) }}
+		{% endif %}
+		<form action="" method="post" name="system_auth_form{{ result.RND }}" class="js-auth-form">
+			<input type="hidden" name="AUTH_FORM" value="Y">
+			<input type="hidden" name="TYPE" value="AUTH">
+			{% for key, value in result.POST %}
+				<input type="hidden" name="{{ key }}" value="{{ value }}">
+			{% endfor %}
+			<div class="custom-input-block">
+				<input type="tel" name="USER_LOGIN" id="USER_LOGIN" placeholder="+7 ( ___ ) ___-__-__ *" class="custom-input js-phone" value="{{ result.USER_LOGIN }}" required>
+			</div>
+			<div class="custom-input-block">
+				<input type="password" name="USER_PASSWORD" id="USER_PASSWORD" placeholder="Пароль *" class="custom-input" required>
+			</div>
+			<div class="two-sides two-sides_top-align">
+				<div>
+					<a href="/ajax/send_password.php" rel="nofollow" class="inner-link inner-link--base js-fancy js-pass-request">Выслать пароль по sms</a>
+					<div class="send-pass-msg js-send-pass-msg"></div>
+				</div>
+				<div>
+					<a href="{{ params.REGISTER_URL }}" class="inner-link inner-link--base js-fancy js-auth-request">Регистрация</a>
+				</div>
+			</div>
+			<div class="two-sides bordered-block__form-ctrl">
+				<div>
+					<button type="submit" name="Login" class="butn btn-base">авторизоваться</button>
+				</div>
+				<div>
+					<span class="base-text">* Обязательно для заполнения</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

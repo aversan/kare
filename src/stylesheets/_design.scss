@@ -1,0 +1,519 @@
+.design {
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.design__wrapper {
+  padding: 20px;
+}
+
+.design__left {
+  display: none;
+}
+
+.design__right {
+  box-sizing: border-box;
+  padding: 20px;
+  background: $white;
+}
+
+.design__poster {
+  position: relative;
+  height: 100%;
+}
+
+.design--main .design__poster {
+  background: url(/local/templates/kare_redisign/images/VintageRomance.jpg) no-repeat 0 (33% / cover);
+}
+
+.design__title {
+  margin-bottom: 25px;
+  font-family: "Ubuntu", "Arial", sans-serif;
+  font-size: 25px;
+  line-height: 30px;
+  font-weight: bold;
+  text-align: left;
+  color: theme-color("gray-dark");
+}
+
+.design__note {
+  margin-bottom: 45px;
+  font-family: "Ubuntu", "Arial", sans-serif;
+  font-size: 13px;
+  line-height: 25px;
+  font-weight: 300;
+  color: theme-color("gray-dark");
+}
+
+.design__btn {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 40px;
+  padding: 13px;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration: none;
+  color: $white;
+  background: #3D678D;
+}
+
+.icon_arrow {
+  width: 8px;
+  height: 14px;
+  stroke: #3D678D;
+}
+
+.icon_blue {
+  fill: #3D678D;
+}
+
+.design-arrow {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .design {
+    position: relative;
+    margin: 30px 0;
+  }
+
+  .design__wrapper {
+    position: relative;
+    padding: 0;
+  }
+
+  .design__left {
+    display: block;
+    width: 100%;
+    height: 320px;
+  }
+
+  .design__image {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+  }
+
+  .design__right {
+    position: absolute;
+    right: -300px;
+    top: 0;
+    box-sizing: border-box;
+    width: 300px;
+    padding: 10px 30px 30px 30px;
+    z-index: 100;
+    transition: right 0.5s ease;
+    &.is-open {
+      right: 0;
+    }
+  }
+
+  .design__title {
+    margin-bottom: 20px;
+  }
+
+  .design__note {
+    margin-bottom: 25px;
+  }
+
+  .design__btn {
+    width: auto;
+    min-height: 50px;
+    padding: 18px;
+    font-size: 13px;
+  }
+
+  .design-arrow {
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    display: block;
+    width: 60px;
+    height: 60px;
+    background: $white;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+
+    .icon-wrapper {
+      top: 50%;
+      left: 14px;
+      transform: translateY(-50%);
+    }
+  }
+
+  .product-marker {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    background: #3D678D;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .product-marker_1 {
+    top: 215px;
+    left: 680px;
+  }
+
+  .product-marker_2 {
+    top: 312px;
+    left: 146px;
+  }
+
+  .product-marker_3 {
+    top: 85px;
+    left: 9%;
+  }
+
+  .product-marker_4 {
+    top: 233px;
+    left: 325px;
+  }
+
+  .product-marker_5 {
+    top: 353px;
+    left: 340px;
+  }
+
+  .product-marker_6 {
+    top: 90px;
+    left: 675px;
+  }
+
+  .product-marker_7 {
+    top: 285px;
+    left: 820px;
+  }
+
+  .product-marker_8 {
+    top: 365px;
+    left: 910px;
+  }
+
+  .product-marker_9 {
+    top: 149px;
+    left: 486px;
+  }
+
+  .product-marker_10 {
+    top: 26px;
+    left: 815px;
+  }
+
+  .product-marker_11 {
+    top: 170px;
+    left: 850px;
+  }
+
+  .product-marker {
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 10px;
+      height: 2px;
+      background: $white;
+    }
+
+    &:before {
+      transform: translate(-50%);
+    }
+
+    &:after {
+      transform: translate(-50%) rotate(90deg);
+    }
+  }
+
+  .product-marker-popup {
+    position: absolute;
+    top: -150%;
+    left: -200%;
+    display: none;
+    width: 160px;
+    background: $white;
+    z-index: 1000;
+  }
+
+  .product-marker_7 .product-marker-popup {
+    top: -550%;
+  }
+
+  .product-marker_11 .product-marker-popup {
+    left: -428%;
+  }
+
+  .product-marker_5 .product-marker-popup {
+    top: -315%;
+  }
+
+  .product-marker_10 .product-marker-popup {
+    top: -100%;
+  }
+
+  .product-marker_8 .product-marker-popup {
+    top: -270%;
+  }
+
+  .product-marker-popup__wrapper {
+    position: relative;
+    padding: 14px 10px 18px 18px;
+  }
+
+  .product-marker-popup__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 9px;
+    overflow: hidden;
+  }
+
+  .product-marker-popup__image {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+  }
+
+  .product-marker-popup__link {
+    display: block;
+    margin-bottom: 7px;
+    font-family: 'Ubuntu', 'Arial', sans-serif;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 300;
+    text-decoration: none;
+    color: $black;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .product-marker-popup__price {
+    font-family: 'Ubuntu', 'Arial', sans-serif;
+    font-size: 13px;
+    line-height: normal;
+    font-weight: bold;
+    color: theme-color("gray-dark");
+  }
+
+  .product-marker-popup__btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+
+    .icon-wrapper {
+      display: block;
+      width: 30px;
+      height: 30px;
+      background: $gray-400;
+      border-radius: 50%;
+
+      &:hover {
+        background: theme-color("primary");
+      }
+    }
+    .icon_basket {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 16px;
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .design__right.is-open .icon_arrow {
+    transform: rotate(180deg);
+  }
+
+  .product-marker:hover .product-marker-popup {
+    display: block;
+  }
+}
+
+@media (min-width: 1200px) {
+  .product-marker_1 {
+    top: 231px;
+    left: 50%;
+  }
+
+  .product-marker_2 {
+    top: 325px;
+    left: 10%;
+  }
+
+  .product-marker_3 {
+    top: 60px;
+    left: 9%;
+  }
+
+  .product-marker_4 {
+    top: 225px;
+    left: 23.5%;
+  }
+
+  .product-marker_5 {
+    top: 351px;
+    left: 25%;
+  }
+
+  .product-marker_6 {
+    top: 70px;
+    left: 50%;
+  }
+
+  .product-marker_7 {
+    top: 283px;
+    left: 62%;
+  }
+
+  .product-marker_8 {
+    top: 380px;
+    left: 67%;
+  }
+
+  .product-marker_9 {
+    top: 149px;
+    left: 36%;
+  }
+
+  .product-marker_10 {
+    top: 26px;
+    left: 60%;
+  }
+
+  .product-marker_11 {
+    top: 170px;
+    left: 63%;
+  }
+
+  .design {
+    margin-bottom: 80px;
+  }
+
+  .design__left {
+    height: 500px;
+  }
+
+  .design__right {
+    right: -400px;
+    width: 400px;
+    height: 500px;
+    padding: 40px;
+  }
+
+  .design__title {
+    margin-bottom: 70px;
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .design__note {
+    margin-bottom: 120px;
+    font-size: 15px;
+    line-height: 25px;
+  }
+}
+
+@media (min-width: 1920px) {
+  .product-marker_1 {
+    top: 215px;
+    left: 680px;
+  }
+
+  .product-marker_2 {
+    top: 312px;
+    left: 146px;
+  }
+
+  .product-marker_3 {
+    top: 85px;
+    left: 125px;
+  }
+
+  .product-marker_4 {
+    top: 233px;
+    left: 325px;
+  }
+
+  .product-marker_5 {
+    top: 353px;
+    left: 340px;
+  }
+
+  .product-marker_6 {
+    top: 90px;
+    left: 675px;
+  }
+
+  .product-marker_7 {
+    top: 285px;
+    left: 820px;
+  }
+
+  .product-marker_8 {
+    top: 365px;
+    left: 910px;
+  }
+
+  .product-marker_9 {
+    top: 149px;
+    left: 486px;
+  }
+
+  .product-marker_10 {
+    top: 26px;
+    left: 815px;
+  }
+
+  .product-marker_11 {
+    top: 170px;
+    left: 850px;
+  }
+
+  .design__wrapper {
+    max-width: 1920px;
+    padding: 0 45px;
+    margin: 0 auto;
+    font-size: 0;
+  }
+
+  .design__left {
+    display: inline-block;
+    vertical-align: top;
+    width: 74.5%;
+    height: 501px;
+    margin-right: 1.4%;
+  }
+
+  .design__right {
+    position: static;
+    display: inline-block;
+    vertical-align: top;
+    width: 23.4%;
+    height: 501px;
+    padding: 6px 40px;
+  }
+
+  .design-arrow {
+    display: none;
+  }
+
+  .design__title {
+    margin-bottom: 79px;
+  }
+
+  .design__note {
+    margin-bottom: 173px;
+  }
+}

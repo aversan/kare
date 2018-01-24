@@ -1,0 +1,78 @@
+.form-field {
+  position: relative;
+
+  &__input {
+    &.form-control {
+      padding-right: 40px;
+
+      .form-field-sm & {
+        padding-right: 32px;
+      }
+    }
+
+    .form-field__action_first ~ & {
+      padding-left: 40px;
+
+      .form-field-sm & {
+        padding-left: 32px;
+      }
+    }
+  }
+
+  &__action {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    line-height: 40px;
+    display: none;
+    cursor: pointer;
+    opacity: .5;
+
+    &_first {
+      left: 0;
+      right: auto;
+    }
+
+    &:hover {
+      opacity: .75;
+    }
+
+    &_showed {
+      display: block;
+    }
+
+    .form-field-sm & {
+      width: 32px;
+      line-height: 32px;
+    }
+
+    &_icon {
+      .icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    }
+  }
+}
+
+.form-field-group {
+  &__addon {
+    opacity: .5;
+    text-align: center;
+    min-width: 40px;
+    line-height: 40px;
+  }
+}
+
+.form-field-group-sm {
+  .form-field-group__addon {
+    min-width: 32px;
+    line-height: 32px;
+  }
+}

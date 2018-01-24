@@ -1,0 +1,230 @@
+<div>
+	<h1 class="main-catalog__title">Заказ №{{ result.ACCOUNT_NUMBER }} от {{ result.DATE_INSERT_FORMATED }}</h1>
+	<div class="orderdetail">
+		<div class="cart__table-overflow">
+			<table class="simple-table">
+				<tbody>
+				<tr>
+					<td>Текущий статус:</td>
+					<td>{{ result.STATUS.NAME }}</td>
+				</tr>
+				<tr>
+					<td>Сумма:</td>
+					<td>{{ result.PRICE_FORMATED }}</td>
+				</tr>
+				{% if result.OrderDetails %}
+					<tr>
+						<td>Спецификация к заказу:</td>
+						<td><a href="{{ result.OrderDetails.SRC }}" target="_blank" download>Скачать</a></td>
+					</tr>
+				{% endif %}
+				<tr>
+					<td>Отменен:</td>
+					{% if result.CANCELED == 'Y' %}
+						<td>
+							Да
+						</td>
+					{% else %}
+						<td>
+							Нет&nbsp;&nbsp;&nbsp;
+							{% if not ((result.PAYED == 'Y') or (result.STATUS_ID == 'C')) %}
+								<a href="#cancel_order" class="butn btn-gray fancy">Отменить</a>
+							{% endif %}
+						</td>
+					{% endif %}
+				</tr>
+				<tr>
+					<td>
+						Дата резерва:
+					</td>
+					<td>
+						<span class="orderdetail__reserve-date">{{ result.DateRezerv ? result.DateRezerv.VALUE : '-'}}</span><button type="button" class="butn btn-gray {{ result.DateRezervDisabled ? 'js-change-reserve-date' : '' }}" data-ajax-url="{{ result.AJAX_CHANGE_RESERVE_DATE_URL }}" {{ result.DateRezervDisabled ? '' : 'disabled' }} data-request="{{ result.AJAX_DATA }}">Продлить дату резервирования</button>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			<div class="orderdetail-header">
+				<div class="pink-header">Данные вашей учетной записи</div>
+			</div>
+			<div class="cart__table-overflow">
+				<table class="simple-table">
+					<tbody>
+					<tr>
+						<td>Логин:</td>
+						<td>{{ result.USER_LOGIN }}</td>
+					</tr>
+					<tr>
+						<td>E-Mail адрес:</td>
+						<td><a href="mailto:{{ result.USER_EMAIL }}">{{ result.USER_EMAIL }}</a></td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="orderdetail-header">
+			<div class="pink-header">Параметры заказа</div>
+		</div>
+		<div class="cart__table-overflow">
+			<table class="simple-table">
+				<tbody>
+				<tr>
+					<td>Тип плательщика:</td>
+					<td>{{ result.PERSON_TYPE.NAME }}</td>
+				</tr>
+				<tr>
+					<td>Мобильный телефон:</td>
+					<td>
+						{{ result.ORDER_PROPS.USER_LOGIN.VALUE }}
+					</td>
+				</tr>
+				<tr>
+					<td>Фамилия:</td>
+					<td>
+						{{ result.ORDER_PROPS.LAST_NAME.VALUE }}
+					</td>
+				</tr>
+				<tr>
+					<td>Имя:</td>
+					<td>
+						{{ result.ORDER_PROPS.NAME.VALUE }}
+					</td>
+				</tr>
+				<tr>
+					<td>Отчество:</td>
+					<td>
+						{{ result.ORDER_PROPS.SECOND_NAME.VALUE }}
+					</td>
+				</tr>
+				<tr>
+					<td>Электронная почта:</td>
+					<td>
+						{{ result.ORDER_PROPS.EMAIL.VALUE }}
+					</td>
+				</tr>
+				<tr>
+					<td>Индекс:</td>
+					<td>
+						{{ result.ORDER_PROPS.ZIP.VALUE }}
+					</td>
+				</tr>
+
+				<tr>
+					<td>Город доставки:</td>
+					<td>
+						{{ result.ORDER_PROPS.LOCATION.VALUE }}
+					</td>
+				</tr>
+				<tr>
+					<td>Улица:</td>
+					<td>
+						{{ result.ORDER_PROPS.STREET.VALUE }}
+					</td>
+				</tr>
+				<tr>
+					<td>Дом:</td>
+					<td>
+						{{ result.ORDER_PROPS.HOUSE.VALUE }}
+					</td>
+				</tr>
+				<tr>
+					<td>Квартира:</td>
+					<td>
+						{{ result.ORDER_PROPS.FLAT.VALUE }}
+					</td>
+				</tr>
+				<tr>
+					<td>Подписка на рассылку:</td>
+					<td>
+						{{ result.ORDER_PROPS.SUBSCRIBE.ACTIVE == 'Y' ? 'Да' : 'Нет' }}
+					</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="orderdetail-header">
+			<div class="pink-header">Параметры доставки и оплаты</div>
+		</div>
+		<div class="cart__table-overflow">
+			<table class="simple-table">
+				<tbody>
+				<tr>
+					<td>Платёжная система:</td>
+					<td>
+						{{ result.PAY_SYSTEM.NAME }}
+					</td>
+				</tr>
+				<tr>
+					<td>Оплачен:</td>
+					<td>
+						{{ result.PAYED == 'Y' ? 'Да' : 'Нет' }}
+					</td>
+				</tr>
+				<tr>
+					<td>Служба доставки:</td>
+					<td>
+						{{ result.DELIVERY.NAME }}
+					</td>
+				</tr>
+				{% if not (result.PAYED == 'Y' or result.CANCELED == 'Y') %}
+					<tr>
+						<td colspan="2">
+							<a href="{{ result.URL_TO_LIST ~ result.ACCOUNT_NUMBER }}/?payment=Y" class="butn btn-base butn-center">Оплатить</a>
+						</td>
+					</tr>
+				{% endif %}
+				</tbody>
+			</table>
+		</div>
+		<div class="orderdetail-header">
+			<div class="pink-header">Содержимое заказа</div>
+		</div>
+		<div class="cart__table-overflow">
+			<table class="simple-table-goods">
+				<thead>
+				<tr>
+					<td>Наименование</td>
+					<td>Кол-во</td>
+					<td>Цена</td>
+					<td class="">Свойства</td>
+					<td>Тип цены</td>
+				</tr>
+				</thead>
+				<tbody>
+				{% for basketItem in result.BASKET %}
+					<tr>
+						<td>
+							<a href="{{ basketItem.DETAIL_PAGE_URL }}" target="_blank">{{ basketItem.NAME }}</a>
+						</td>
+						<td>
+							{{ basketItem.QUANTITY }}
+						</td>
+						<td class="price">{{ basketItem.PRICE_FORMATED }}</td>
+						<td class="props">
+							{% for properties in basketItem.PROPS %}
+								<div>{{ properties.NAME }}: <b>{{ properties.VALUE }}</b></div>
+							{% endfor %}
+						</td>
+						<td>Цена</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="orderdetail-result-wrap">
+			<div class="orderdetail-result">
+				<div class="orderdetail-result__item">
+					<span>Товаров на:</span>
+					<span>{{ result.FORMATTED_BASKET_PRICE }}</span>
+				</div>
+				<div class="orderdetail-result__item">
+					<span>Доставка:</span>
+					<span>{{ result.FORMATTED_PRICE_DELIVERY }}</span>
+				</div>
+				<div class="orderdetail-result__item">
+					<span class="cart__total-text">Итого:</span>
+					<span class="cart__total-sum">{{ result.PRICE_FORMATED }}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

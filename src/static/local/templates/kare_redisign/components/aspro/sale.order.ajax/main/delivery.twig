@@ -1,0 +1,133 @@
+<div class="bordered-block__title bordered-block__title--delivery">Способ доставки</div>
+{{ bitrix_sessid_post() }}
+{% for properties in result.ORDER_PROP.USER_PROPS_Y %}
+
+	{# todo для отправки id города в компонент
+	{% if properties.VALUE != 0 and properties.CODE == 'LOCATION' %}
+		{% set locationValues = properties.VALUE %}
+	{% else %}
+		{% set locationValues = result.ORDER_PROP.LOCATION_ORDER_PROPS_VALUE %}
+	{% endif %}
+	#}
+
+	{% set value = 0 %}
+	{% if (properties.VARIANTS is iterable and properties.VARIANTS|length > 0) %}
+		{% for variant in properties.VARIANTS if variant.SELECTED == 'Y' %}
+			{% set value = variant.ID %}
+		{% endfor %}
+	{% endif %}
+	{% if properties.TYPE == 'LOCATION' %}
+
+		{# todo версия с отправкой id города в компонент
+		{% set location = APPLICATION.includeComponent(
+			'aspro:sale.ajax.locations',
+			'order',
+			{
+				'AJAX_CALL': 'N',
+				'COUNTRY_INPUT_NAME': 'COUNTRY',
+				'REGION_INPUT_NAME': 'REGION',
+				'CITY_INPUT_NAME': properties.FIELD_NAME,
+				'CITY_OUT_LOCATION': 'Y',
+				'VALUE': value,
+				'LOCATION_VALUE': (locationValues is iterable ? locationValues.LOCATION.LOCATION_CODE : value),
+				'APTEKA': properties.CODE == 'CITY_APT' ? 'Y' : 'N',
+				'MAIN_LOCATION': properties.CODE == 'LOCATION' ? 'Y' : 'N',
+				'ORDER_PROPS_ID': properties.ID,
+				'ONCITYCHANGE': (properties.IS_LOCATION == 'Y' or properties.IS_LOCATION4TAX == 'Y') ? 'submitForm()',
+				'SIZE1': properties.SIZE1,
+				'LOCATION_VALUES': locationValues,
+			},
+			null,
+			{
+				'HIDE_ICONS': 'Y',
+			}
+		) %}
+		#}
+
+		{% set location = APPLICATION.includeComponent(
+			'aspro:sale.ajax.locations',
+			'order',
+			{
+				'AJAX_CALL': 'N',
+				'COUNTRY_INPUT_NAME': 'COUNTRY',
+				'REGION_INPUT_NAME': 'REGION',
+				'CITY_INPUT_NAME': properties.FIELD_NAME,
+				'CITY_OUT_LOCATION': 'Y',
+				'VALUE': value,
+				'LOCATION_VALUE': value,
+				'APTEKA': properties.CODE == 'CITY_APT' ? 'Y' : 'N',
+				'MAIN_LOCATION': properties.CODE == 'LOCATION' ? 'Y' : 'N',
+				'ORDER_PROPS_ID': properties.ID,
+				'ONCITYCHANGE': (properties.IS_LOCATION == 'Y' or properties.IS_LOCATION4TAX == 'Y') ? 'submitForm()',
+				'SIZE1': properties.SIZE1,
+			},
+			null,
+			{
+				'HIDE_ICONS': 'Y',
+			}
+		) %}
+	{% endif %}
+{% endfor %}
+{% if result.DELIVERY is not empty %}
+	<div class="bordered-block__form">
+		{% for delivery in result.DELIVERY %}
+			{% if delivery.ID != 0 %}
+				<div class="custom-input-block">
+					<div class="custom-checkbox">
+						<input
+								type="radio"
+								id="ID_DELIVERY_ID_{{ delivery.ID }}"
+								name="{{ delivery.FIELD_NAME }}"
+								value="{{ delivery.ID }}"
+								{{ delivery.CHECKED == 'Y' ? 'checked="checked"' }}
+						>
+						<label
+								for="ID_DELIVERY_ID_{{ delivery.ID }}"
+								onclick="BX('ID_DELIVERY_ID_{{ delivery.ID }}').checked=true;submitForm();"
+						>
+							{{ delivery.NAME }}
+						</label>
+					</div>
+				</div>
+			{% else %}
+			{% endif %}
+		{% endfor %}
+		<div class="custom-input-block custom-input-block--addr custom-input-block--ind">
+			{% for relatedProps in result.ORDER_PROP.RELATED %}
+				<input
+						type="text"
+						name="{{ relatedProps.FIELD_NAME }}"
+						id="{{ relatedProps.FIELD_NAME }}"
+						class="custom-input"
+						value="{{ relatedProps.VALUE }}"
+						placeholder="{{ relatedProps.NAME }}"
+						code="{{ relatedProps.CODE }}"
+						{{ relatedProps.REQUIED == 'Y' ? 'required' }}
+				>
+			{% endfor %}
+		</div>
+		{% for properties in result.ORDER_PROP.USER_PROPS_Y if properties.CODE == 'FIO_POLUCHATELYA' %}
+			<div class="custom-input-block custom-input-block--ind">
+				<div class="custom-checkbox">
+					<input id="fio_poluch" type="checkbox" checked>
+					<label for="fio_poluch">
+						<span>Ф.И.О. получателя совпадает с Ф.И.О. покупателя</span>
+					</label>
+				</div>
+			</div>
+			<div class="custom-input-block custom-input-block--ind">
+				<input
+						type="text"
+						name="{{ properties.FIELD_NAME }}"
+						id="{{ properties.FIELD_NAME }}"
+						placeholder="ФИО получателя"
+						class="custom-input"
+						code="{{ properties.CODE }}"
+						value="{{ properties.VALUE }}"
+						{{ properties.REQUIED == 'Y' ? 'required' }}
+				>
+			</div>
+		{% endfor %}
+		<p class="gray-text">Стоимость доставки сообщит наш менеджер по телефону после оформления заказа</p>
+	</div>
+{% endif %}

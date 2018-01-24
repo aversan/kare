@@ -1,0 +1,11 @@
+.alert {
+  padding: $alert-padding-y $alert-padding-x;
+  margin-bottom: $alert-margin-bottom;
+  border: $alert-border-width solid transparent;
+}
+
+.alert-light {
+  background-color: $gray-100;
+  border-color: $gray-100;
+  color: $gray-600;
+}

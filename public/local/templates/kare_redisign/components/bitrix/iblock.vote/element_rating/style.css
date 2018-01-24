@@ -1,0 +1,32 @@
+div.star-active
+{
+	cursor: pointer;
+}
+
+div.star-empty
+{
+	width:20px;
+	height:20px;
+}
+
+div.star-empty .icon_star
+{
+	fill: #d1d1d1;
+}
+
+div.star-voted
+{
+	width:20px;
+	height:20px;
+}
+
+div.star-voted .icon_star
+{
+	fill: #F9BB0B;
+}
+
+div.star-over
+{
+	width:20px;
+	height:20px;
+}

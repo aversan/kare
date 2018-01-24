@@ -1,0 +1,64 @@
+{% extends 'layouts/application.html' %}
+
+{% block content %}
+<div class="container-fluid">
+  {% include "_cart/cart-breadcrumb.html" %}
+</div>
+<div class="divider"></div>
+<div class="container-fluid container-max-width">
+  <div class="cart-container">
+    <h1 class="mb-4 mb-sm-6">Корзина</h1>
+    <div class="row">
+      <div class="col-12 col-lg-8 order-lg-1">
+        <div class="card-items pb-2">
+          {% include "_cart/catalog-card-cart.html" %}
+          {% include "_cart/catalog-card-cart-deleted.html" %}
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-auto order-lg-3">
+        <!-- start promo status 1 -->
+        <h5 class="text-uppercase mb-2 pb-1">У меня есть промокод</h5>
+        <div class="input-group input-group-max-width-small">
+          <input class="form-control" type="text" name="" value="" id="" placeholder="Промокод">
+          <span class="input-group-btn">
+            <button class="btn btn-outline-secondary btn-sm btn_higher text-uppercase">Активировать</button>
+          </span>
+        </div>
+        <!-- end promo status 1 -->
+        <br>
+        <br>
+        <!-- start promo status 2 -->
+        <h5 class="text-uppercase mb-2 pb-1">У меня есть промокод</h5>
+        <div class="input-group input-group-max-width-small">
+          <input class="form-control is-error" type="text" name="" value="" id="" placeholder="Промокод">
+          <span class="input-group-btn">
+            <button class="btn btn-outline-secondary btn-sm btn_higher text-uppercase">Активировать</button>
+          </span>
+        </div>
+        <div class="text-error typo-sm mt-2">Неправильный или просроченный промокод</div>
+        <!-- end promo status 2 -->
+        <br>
+        <br>
+        <!-- start promo status 3 -->
+        <h5 class="text-uppercase mb-2">Промокод применен</h5>
+        <div class="mb-2 pb-1">Текст примененного промокода. Например, вам бесплатная доставка</div>
+        <button class="btn btn-outline-secondary btn-sm text-uppercase">Отменить промокод</button>
+        <!-- end promo status 3 -->
+        <br>
+        <br>
+      </div>
+      <div class="col-12 col-sm-6 col-lg-3 order-lg-2">
+        {% include "_cart/cart-total.html" %}
+      </div>
+    </div>
+  </div>
+  <div id="end-cart"></div>
+  <div class="divider-large d-sm-none d-md-block"></div>
+  {% include "_cart/product-releated.html" %}
+  <div class="divider-large"></div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+{% include "_cart/cart-scripts.html" %}
+{% endblock %}

@@ -1,0 +1,144 @@
+<form action="" method="POST" name="ORDER_FORM" id="ORDER_FORM" enctype="multipart/form-data">
+
+
+
+
+
+	<h1 class="main-catalog__title">Подтверждение заказа</h1>
+
+	<div class="bordered-block">
+		<div class="two-sides two-sides--title">
+			<div>
+				<div class="bordered-block__title bordered-block__title--contents">Состав заказа</div>
+			</div>
+			<div>
+				<a href="#">Изменить</a>
+			</div>
+		</div>
+		<div class="cart__table-overflow">
+			<table class="preorder__table">
+				<thead>
+				<tr>
+					<th class="cart__num"></th>
+					<th class="cart__pic"></th>
+					<th class="cart__name">Название</th>
+					<th class="cart__count-small">Количество</th>
+					<th class="cart__price-small">Цена</th>
+					<th class="cart__price-small">Сумма</th>
+				</tr>
+				</thead>
+				<tbody>
+				<tr>
+					<td class="cart__num">1.</td>
+					<td class="cart__pic">
+						<a href="#" class="cart__img">
+							<img src="<?=SITE_TEMPLATE_PATH?>/images/kare_order_prod.jpg" alt="Кресло Крылья Ангела">
+						</a>
+					</td>
+					<td class="cart__name">
+						<a href="#">Кресло "Крылья Ангела" (Angels Wings), серия "Ритм" (Rhythm)</a>
+						<div class="cart__info">
+							<span>Артикул - 7638</span><br>
+							<span>Категория - Ключницы</span><br>
+							<span>Назначения - Прихожая</span><br>
+							<span>Группа товара - Декор</span><br>
+							<span>Цвета - Красный</span><br>
+							<span>Размер, см - 24x58x13</span>
+						</div>
+					</td>
+					<td class="cart__count-small">1 шт</td>
+					<td class="cart__price-small">35 770 Р</td>
+					<td class="cart__price-small">35 770 Р</td>
+				</tr>
+				<tr>
+					<td class="cart__num">2.</td>
+					<td class="cart__pic">
+						<a href="#" class="cart__img">
+							<img src="<?=SITE_TEMPLATE_PATH?>/images/kare_order_prod.jpg" alt="Кресло Крылья Ангела">
+						</a>
+					</td>
+					<td class="cart__name">
+						<a href="#">Кресло "Крылья Ангела" (Angels Wings), серия "Ритм" (Rhythm)</a>
+						<div class="cart__info">
+							<span>Артикул - 7638</span><br>
+							<span>Размер, см - 24x58x13</span>
+						</div>
+					</td>
+					<td class="cart__count-small">1 шт</td>
+					<td class="cart__price-small">35 770 Р</td>
+					<td class="cart__price-small">35 770 Р</td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="bordered-block bordered-block--ind">
+		<div class="bordered-block__title bordered-block__title--delivery">Способ доставки</div>
+		<div class="cart__info">
+			<p>Доставка транспортной компанией</p>
+		</div>
+		<div class="cart__info">
+			<span>Город доставки</span>
+			<p>Россия, Санкт-Петербург</p>
+		</div>
+		<div class="cart__info">
+			<span>ФИО получателя</span>
+			<p>Артв Иван Петрович</p>
+		</div>
+		<div class="cart__info">
+			<div class="three-cols">
+				<div>
+					<span>Улица</span>
+					<p>Ленинский проспект</p>
+				</div>
+				<div>
+					<span>Дом</span>
+					<p>14</p>
+				</div>
+				<div>
+					<span>Квартира</span>
+					<p>78</p>
+				</div>
+			</div>
+
+		</div>
+		<div class="cart__info">
+			<span>Стоимость доставки сообщит наш менеджер по телефону<br>после оформления заказа</span>
+		</div>
+	</div>
+
+	<div class="two-sides two-sides--bord">
+		<div class="bordered-block bordered-block--ind">
+			<div class="bordered-block__title bordered-block__title--delivery">Способ доставки</div>
+			<div class="cart__info">
+				<span>ФИО получателя</span>
+				<p>Артв Иван Петрович</p>
+			</div>
+			<div class="cart__info">
+				<span>Телефон</span>
+				<p>+7 (981) 123-45-67</p>
+			</div>
+			<div class="cart__info">
+				<span>Электронная почта</span>
+				<p>e.mail@mail.ru</p>
+			</div>
+		</div>
+		<div class="bordered-block bordered-block--ind">
+			<div class="bordered-block__title bordered-block__title--seller">Способ доставки</div>
+			<span class="gray-text gray-text--lh">Общество с ограниченной ответственностью «Вариант - Д»<br>
+				ИНН 7448150107<br>
+				КПП 744801001<br>
+				454138, Челябинская обл., Челябинск г., пр. Победы, д.290, оф. 210, тел.: +7 (351) 218-60-00, 218-60-01, 218-60-02<br>
+				р/с40702810304000005782, в банке УРАЛЬСКИЙ ФИЛИАЛ АО "РАЙФФАЙЗЕНБАНК", БИК 046577906<br>
+				к/с 30101810100000000906</span>
+		</div>
+	</div>
+	<div class="cart__ctrl cart__ctrl--withtext">
+		<a href="#" class="butn btn-gray">вернуться</a>
+		<div>
+			<span class="gray-text">Нажимая "Подтвердить заказ", я соглашаюсь с Договором-офертой</span>
+			<input type="submit" value="подтвердить заказ" name="" id="" class="butn btn-base" onclick="ga('send', 'event', 'Button7', 'Buttonclick10');">
+		</div>
+	</div>
+</div>

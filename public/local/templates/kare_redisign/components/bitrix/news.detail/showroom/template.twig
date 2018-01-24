@@ -1,0 +1,99 @@
+<section class="showroom-detail">
+	<div class="showroom-detail__top">
+		<div class="showroom-detail__banner">
+			<img class="showroom-detail__banner-image" src="{{ result.DETAIL_PICTURE.SRC }}" alt="Фото">
+		</div>
+	</div>
+	<div class="container">
+		<section class="showroom-info">
+			<div class="showroom-info__wrapper cf">
+				<div class="showroom-info__left">
+					<section class="showroom-about">
+						<div class="showroom-about__wrapper">
+							<h2 class="showroom-about__title">{{ result.NAME }}</h2>
+							<div class="showroom-about__text js-mobile-showroom-about">{{ result.DETAIL_TEXT }}</div>
+						</div>
+						<button class="showroom-info__more js-showroom-about-more" type="button">Читать далее</button>
+					</section>
+				</div>
+				<div class="showroom-info__right">
+					<section class="showroom-contacts">
+						<div class="showroom-contacts__wrapper">
+							<h3 class="showroom-contacts__name">{{ result.NAME }}</h3>
+							<div class="showroom-contacts__contacts">
+								<div class="showroom-contacts__item showroom-contacts__item_address">
+									<span class="showroom-contacts__row showroom-contacts__row_field">{{ result.PROPERTIES.ADDRESS.NAME }}:</span>
+									<span class="showroom-contacts__row showroom-contacts__row_value">{{ result.PROPERTIES.ADDRESS.VALUE }}</span>
+								</div>
+								<div class="showroom-contacts__item showroom-contacts__item_contacts">
+									<span class="showroom-contacts__row showroom-contacts__row_field">{{ result.PROPERTIES.PHONE.NAME }}:</span>
+									<div class="showroom-contacts__row showroom-contacts__row_value">
+										<span class="showroom-contacts__phone">{{ result.PROPERTIES.PHONE.VALUE }}</span>
+										<a class="showroom-contacts__email" href="mailto:info@kare-moscow.ru">{{ result.PROPERTIES.EMAIL.VALUE }}</a>
+									</div>
+								</div>
+								<div class="showroom-contacts__item showroom-contacts__item_timetable">
+									<span class="showroom-contacts__row showroom-contacts__row_field">{{ result.PROPERTIES.WORKTIME_WEEKDAYS.NAME[:12] }}</span>
+									<span class="showroom-contacts__row showroom-contacts__row_value">{{ result.PROPERTIES.WORKTIME_WEEKDAYS.VALUE }}<br>
+										{{ result.PROPERTIES.WORKTIME_WEEKEND.VALUE }}</span>
+								</div>
+							</div>
+							<script>
+								var detailCoordinates = {{ result.COORDINATES }};
+							</script>
+							<div class="showroom-contacts__map">
+								<button class="showroom-contacts__map-btn btn btn_show-map js-show-map-btn" type="button">Посмотреть на карте</button>
+								<article class="showroom-map-popup">
+									<div class="showroom-map-popup__inner">
+										<div class="icon-wrapper icon-wrapper_close-map js-close-btn">
+											{{ getSvg('close', 'icon icon_close icon_pink') }}
+										</div>
+										<div class="showroom-map-popup__map" id="showroom-detail-map">
+									</div>
+								</article>
+							</div>
+						</div>
+					</section>
+				</div>
+			</div>
+		</section>
+		{% if result.PHOTOS.SMALL is not empty %}
+			<section class="showroom-gallery">
+				<div class="showroom-gallery__wrapper">
+				<h2 class="showroom-gallery__title">Фото шоу-рума</h2>
+					<div class="showroom-gallery__inner">
+						<ul class="showroom-gallery__list js-slick-showroom js-showroom-gallery-list">
+							{% for key, photo in result.PHOTOS.SMALL %}
+								<li class="showroom-gallery__item">
+									<a class="js-showroom-gallery-fancybox" href="{{ result.PHOTOS.BIG[key] }}">
+										<div class="showroom-gallery__image" style="background: url('{{ photo }}') no-repeat right top/cover"></div>
+										<div class="showroom-gallery__overlay">
+											<button class="showroom-gallery__btn" type="button">
+												<div class="icon-wrapper">
+													{{ getSvg('ic-search', 'icon icon_search icon_white') }}
+												</div>
+											</button>
+										</div>
+									</a>
+								</li>
+							{% endfor %}
+						</ul>
+						{% if result.PHOTOS.SMALL | length > 3 %}
+							<button class="showroom-gallery__more js-showroom-gallery-more-btn" type="button">Показать еще</button>
+						{% endif %}
+					</div>
+				</div>
+			</section>
+		{% endif %}
+		{% if result.PROPERTIES.VIDEO_LINK.VALUE is not empty %}
+			<article class="showroom-video">
+				<div class="showroom-video__wrapper">
+					<h2 class="showroom-video__title">{{ result.PROPERTIES.VIDEO_LINK.NAME }}</h2>
+						<div class="showroom-video__inner">
+						<iframe class="showroom-video__player" src="{{ result.PROPERTIES.VIDEO_LINK.VALUE }}" frameborder="0" allowfullscreen></iframe>
+					</div>
+				</div>
+			</article>
+		{% endif %}
+	</div>
+</section>

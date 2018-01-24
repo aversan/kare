@@ -1,0 +1,23 @@
+{% extends 'layouts/application.html' %}
+
+{% block content %}
+<div class="container-fluid">
+  {% include "_catalog/catalog-breadcrumb.html" %}
+</div>
+<div class="divider"></div>
+<div class="container-fluid container-max-width">
+  <h1 class="catalog-title mb-4 mb-sm-3">Каталог</h1>
+  {% include "_catalog/catalog-category.html" %}
+  <div class="divider-large"></div>
+  {% include "_product/product-discount.html" %}
+  <div class="divider-large"></div>
+  {% include "_product/product-popular.html" %}
+  <div class="divider-large"></div>
+  {% include "_product/product-new.html" %}
+  <div class="divider-large"></div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  {% include "_catalog/catalog-scripts.html" %}
+{% endblock %}

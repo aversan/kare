@@ -1,0 +1,37 @@
+{% for item in result.ITEMS %}
+	<div class="showroom-contacts-list__item">
+		<section class="showroom-contacts">
+			<div class="showroom-contacts__wrapper">
+				<span class="showroom-contacts__name">{{ item.NAME }}</span>
+				<div class="showroom-contacts__contacts">
+					<div class="showroom-contacts__item showroom-contacts__item_address">
+						<span class="showroom-contacts__row showroom-contacts__row_field">{{ item.PROPERTIES.ADDRESS.NAME }}:</span>
+						<span class="showroom-contacts__row showroom-contacts__row_value">{{ item.PROPERTIES.ADDRESS.VALUE }}</span>
+					</div>
+					<div class="showroom-contacts__item showroom-contacts__item_contacts">
+						<span class="showroom-contacts__row showroom-contacts__row_field">{{ item.PROPERTIES.PHONE.NAME }}:</span>
+						<div class="showroom-contacts__row showroom-contacts__row_value">
+							<span class="showroom-contacts__phone">{{ item.PROPERTIES.PHONE.VALUE }}</span>
+						</div>
+					</div>
+					<div class="showroom-contacts__item">
+						<span class="showroom-contacts__row showroom-contacts__row_field">{{ item.PROPERTIES.WORKTIME.NAME }}:</span>
+						{% for key, time in item.PROPERTIES.WORKTIME.VALUE %}
+							<div class="showroom-contacts__row showroom-contacts__row_value">
+								<span>{{ item.PROPERTIES.WORKTIME.DESCRIPTION[key] }}: {{ time }}</span>
+							</div>
+						{% endfor %}
+					</div>
+					{% if item.PREVIEW_TEXT is not empty %}
+						<div class="showroom-contacts__item">
+							<span class="showroom-contacts__row showroom-contacts__row_field">Дополнительное описание:</span>
+							<div class="showroom-contacts__row showroom-contacts__row_value">
+								<span>{{ item.PREVIEW_TEXT }}</span>
+							</div>
+						</div>
+					{% endif %}
+				</div>
+			</div>
+		</section>
+	</div>
+{% endfor %}

@@ -1,0 +1,35 @@
+<section class="product-card pl-md-7 product-max-width ml-auto mr-auto ml-md-0">
+	{% include "_product/product-card-header.html" %}
+	<div class="divider-small d-none d-md-block"></div>
+  {% include "_product/product-card-prices.html" %}
+  {% include "_product/product-card-alert-showroom.html" %}
+	<div class="product-card__max-width">
+		{% include "_product/product-card-buttons.html" %}
+		<div class="mt-4">
+			<span class="text-gray">Ближайшая отгрузка</span>
+      <div class="d-inline-block js-drop" data-theme="drop-theme-arrows drop_shipment" data-open-on="click" data-position="bottom center">
+			  <span class="text-primary drop-target clickable">25 сентября <span class="icon icon_sm icon_triangle-down icon_primary"></span></span>
+        <div class="drop-content">
+          <div class="drop-item d-flex flex-column px-4 py-2">
+            <span><span class="font-weight-bold">Из Москвы</span> <span class="text-muted text-nowrap">131 шт.</span></span>
+            <span>25 сентября</span>
+          </div>
+          <div class="drop-item d-flex flex-column px-4 py-2">
+            <span><span class="font-weight-bold">Из Челябинска</span> <span class="text-muted text-nowrap">49 шт.</span></span>
+            <span>25 сентября</span>
+          </div>
+        </div>
+        <!--<div class="drop-content">
+          <div class="typo-sm text-muted font-weight-bold px-4">Ожидается поступление</div>
+          <div class="drop-item d-flex flex-column px-4 py-2">
+            <span><span class="font-weight-bold">Из Москвы</span> <span class="text-muted text-nowrap">131 шт.</span></span>
+            <span>25 сентября</span>
+          </div>
+        </div>-->
+      </div>
+		</div>
+		<div class="divider-small"></div>
+		{% include "_product/product-card-items.html" %}
+		{% include "_product/product-card-share.html" %}
+	</div>
+</section>

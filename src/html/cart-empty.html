@@ -1,0 +1,22 @@
+{% extends 'layouts/application.html' %}
+
+{% block content %}
+<div class="container-fluid">
+  {% include "_cart/cart-breadcrumb.html" %}
+</div>
+<div class="divider"></div>
+<div class="container-fluid container-max-width">
+  <div class="cart-container">
+    <h1 class="mb-4 mb-sm-6">Корзина</h1>
+    <h4 class="mb-3">В корзине пусто</h4>
+    <a class="btn-primary btn-sm btn_higher text-uppercase btn-width-small" href="">За покупками!</a>
+  </div>
+  <div class="divider-large"></div>
+  {% include "_product/product-viewed.html" %}
+  <div class="divider-large"></div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  {% include "_cart/cart-scripts.html" %}
+{% endblock %}

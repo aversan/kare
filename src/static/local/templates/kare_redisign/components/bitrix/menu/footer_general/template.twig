@@ -1,0 +1,16 @@
+<div class="footer-nav__wrapper">
+	<ul class="footer-nav__list">
+		{% for item in result %}
+			<li class="footer-nav__item">
+				<a class="footer-nav__link" href="{{ item.LINK }}">{{ item.TEXT }}</a>
+				<ul class="footer-nav__sublist">
+					{% for subItem in item.SUB_ITEMS %}
+						<li class="footer-nav__subitem">
+							<a class="footer-nav__sublink" href="{{ subItem.LINK }}">{{ subItem.TEXT }}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

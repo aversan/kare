@@ -1,0 +1,26 @@
+{% extends 'layouts/application.html' %}
+
+{% block content %}
+<div class="divider"></div>
+<div class="container-fluid container-max-width">
+  <div class="checkout-container-max-width-xlarge">
+    <h1 class="mb-5 mb-sm-6">Заказ оплачен!</h1>
+    {% include "_checkout/order-info.html" %}
+    <div class="pb-4"></div>
+    <div class="divider-small"></div>
+    {% include "_checkout/contact-text.html" %}
+    <div class="pb-4"></div>
+    <div class="divider-small"></div>
+    {% include "_checkout/order.html" %}
+    {% include "_checkout/order-footer-paid.html" %}
+  </div>
+  <div class="divider-large"></div>
+  {% include "_checkout/product-interest.html" %}
+  <div class="divider-large"></div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  {% include "_checkout/checkout-scripts.html" %}
+{% endblock %}
+

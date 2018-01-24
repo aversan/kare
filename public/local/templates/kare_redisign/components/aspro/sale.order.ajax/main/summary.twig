@@ -1,0 +1,36 @@
+<div class="bordered-block total-block">
+	<div class="total-block__head two-sides">
+		<div>
+			Ваш заказ
+		</div>
+		<div>
+			{#<a href="{{ params.PATH_TO_BASKET }}">Изменить</a>#}
+		</div>
+	</div>
+	<div class="two-sides">
+		<div>Товаров ({{ result.BASKET_ITEMS_COUNT }})</div>
+		<div>{{ result.ITEMS_PRICE }}</div>
+	</div>
+	<div class="two-sides">
+		<div>Доставка</div>
+		<div>
+			<span class="gray-text">сумма доставки рассчитывается менеджером</span>
+		</div>
+	</div>
+	{#<div class="two-sides">#}
+		{#<div>Бонусы</div>#}
+		{#<div>?</div>#}
+	{#</div>#}
+	<div class="two-sides total-block__sum">
+		<div>Итого к оплате:</div>
+		<div>{{ result.FINAL_PRICE }}</div>
+	</div>
+	{#<div class="two-sides">#}
+		{#<div>После выполения заказавам будет начислено бонусов</div>#}
+		{#<div>?</div>#}
+	{#</div>#}
+	{#<div class="two-sides">#}
+		{#<div>И дополнительно “Дружных бонусов”</div>#}
+		{#<div>?</div>#}
+	{#</div>#}
+</div>

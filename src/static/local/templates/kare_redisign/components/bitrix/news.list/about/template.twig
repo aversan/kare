@@ -1,0 +1,70 @@
+{% if result is not empty %}
+	{% for item in result.ITEMS %}
+		{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+		{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+		{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+		{% if item.CODE == 'countries' %}
+			<div id="{{ EDIT_ID }}" class="kare-countries" style="background: url({{ item.PREVIEW_PICTURE.SRC }}) center top no-repeat;">
+				<div class="kare-countries__header">
+					<a target="_blank" href="{{ item.PROPERTIES.LINK.VALUE }}" class="centered-header">{{ item.NAME }}</a>
+					<div class="sub-header">{{ item.PROPERTIES.SUBTITLE.VALUE }}</div>
+				</div>
+			</div>
+		{% elseif item.CODE == 'strength' %}
+			<div id="{{ EDIT_ID }}" class="strengths-list-wrap">
+				<div class="strengths-list">
+					{{ item['~PREVIEW_TEXT'] }}
+				</div>
+			</div>
+			<div class="strengths" style="background: url({{ item.PREVIEW_PICTURE.SRC }}) center top no-repeat;">
+				<a href="{{ item.PROPERTIES.LINK.VALUE }}" class="centered-header strengths__header">{{ item.NAME }}</a>
+			</div>
+		{% elseif item.CODE == 'fans' %}
+			<div id="{{ EDIT_ID }}" class="small-container fans">
+				<div class="two-parts">
+					<div class="fans__pic" style="background-image: url({{ item.PREVIEW_PICTURE.SRC }});"></div>
+					<div class="fans__text">
+						<a href="{{ item.PROPERTIES.LINK.VALUE }}" class="lined-header">{{ item.NAME }}</a>
+						{{ item['~PREVIEW_TEXT'] }}
+					</div>
+				</div>
+			</div>
+		{% elseif item.CODE == 'wood' %}
+			<div id="{{ EDIT_ID }}" class="love-wood" style="background-image: url({{ item.PREVIEW_PICTURE.SRC }})">
+				<div class="small-container">
+					<div class="two-parts">
+						<div>
+							<div class="white-block">
+								<a href="{{ item.PROPERTIES.LINK.VALUE }}" class="lined-header">{{ item.NAME }}</a>
+								{{ item['~PREVIEW_TEXT'] }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% elseif item.CODE == 'near' %}
+			<div id="{{ EDIT_ID }}" class="centered-block">
+				<a href="{{ item.PROPERTIES.LINK.VALUE }}" class="centered-header">{{ item.NAME }}</a>
+				<div>
+					{{ item['~PREVIEW_TEXT'] }}
+				</div>
+			</div>
+		{% elseif item.CODE == 'sale' %}
+			<div id="{{ EDIT_ID }}" class="sell-online" style="background-image: url({{ item.PREVIEW_PICTURE.SRC }});">
+				<div class="pink-trans-block">
+					<div class="pink-trans-block__text">
+						<a href="{{ item.PROPERTIES.LINK.VALUE }}" class="lined-header">{{ item.NAME }}</a>
+						{{ item['~PREVIEW_TEXT'] }}
+					</div>
+				</div>
+			</div>
+		{% elseif item.CODE == 'space' %}
+			<div id="{{ EDIT_ID }}" class="centered-block">
+				<a href="{{ item.PROPERTIES.LINK.VALUE }}" class="centered-header">{{ item.NAME }}</a>
+				<div>
+					{{ item['~PREVIEW_TEXT'] }}
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endif %}

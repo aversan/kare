@@ -1,0 +1,23 @@
+<div class="js-pagenav" data-mobile-width="768" data-mobile-items-count="3" data-desktop-items-count="12">
+<div class="articles magazines js-news-list js-pagenav-list">
+	{% for item in result.ITEMS %}
+		{% if item.FILE_ARRAY.SRC is not empty %}
+			{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+			{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+			{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+			<a target="_blank" href="{{ item.FILE_ARRAY.SRC }}" class="magazines__item" id="{{ EDIT_ID }}">
+				<div class="magazines__pic">
+					<img src="{{ item.PREVIEW_PICTURE.src}}" alt="{{ item.NAME }}">
+					<span class="dowld-pdf"></span>
+				</div>
+				<div class="magazines__title">{{ item.NAME }}</div>
+			</a>
+		{% endif %}
+	{% endfor %}
+</div>
+
+{#{ result.NAV_STRING }#}
+
+<button class="btn btn_center btn_text js-pagenav-more-btn {{ (result.NEXT_PAGE_NUM + 1) <= result.PAGES_COUNT ? '' : 'last'}}" data-url="{{ result.AJAX_URI }}"
+			data-ajax-data="PAGEN_{{result.PAGE_NUMBER}}={{result.NEXT_PAGE_NUM + 1}}&AJAX=Y" type="button">Показать еще</button>
+</div>

@@ -1,0 +1,15 @@
+.download-file {
+	position: relative;
+	background-color: $gray-100;
+	
+	&__link {
+		&::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			right: 0;
+			bottom: 0;			
+		}
+	}
+}

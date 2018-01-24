@@ -1,0 +1,33 @@
+{% extends 'layouts/application.html' %}
+
+{% block content %}
+<div class="container-fluid">
+  {% include "_catalog/catalog-breadcrumb-3.html" %}
+</div>
+<div class="divider"></div>
+<div class="container-fluid container-max-width">
+  <h1 class="catalog-title mb-4 mb-sm-3">Диваны и кресла</h1>
+  <div class="row">
+    <div class="col col-12 col-md-side">
+      {% include "_catalog/catalog-filter.html" %}
+    </div>
+    <div class="col col-section">
+      <div class="catalog-container">
+        {% include "_catalog/catalog-toolbar-2.html" %}
+        <div class="catalog-message-box border text-center mt-4">
+          <h4>Товаров не найдено</h4>
+          <p>Попробуйте изменить условия поиска</p>
+          <div class="mt-3">
+            <button class="btn btn-outline-secondary btn-sm text-uppercase btn-width-medium">Сбросить фильтры</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider-large"></div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  {% include "_catalog/catalog-scripts.html" %}
+{% endblock %}

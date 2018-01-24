@@ -1,0 +1,9 @@
+.input-group-max-width-small {
+  max-width: 320px;
+}
+
+.input-group {
+  .form-control.is-error {
+    z-index: 3;
+  }
+}

@@ -1,0 +1,27 @@
+<nav class="menu-top">
+    <ul class="menu-top__list">
+        {% for item in result %}
+            <li class="menu-top__list-item">
+                {% set isParent = item.IS_PARENT %}
+                <a href="{{ item.LINK }}"
+                   class="menu-top__list-link {% if isParent %}js-menu-top-show-dropdown{% endif %}">
+                    {{ item.TEXT }}
+                    {% if isParent %}
+                        <svg class="menu-top__arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 7 5">
+                            <path stroke-miterlimit="10" d="M6.5.8l-3 3-3-3"/>
+                        </svg>
+                    {% endif %}
+                </a>
+                {% if isParent %}
+                    <ul class="menu-top__dropdown">
+                        {% for child in item.CHILD %}
+                            <li class="menu-top__dropdown-item">
+                                <a href="{{ child.LINK }}" class="menu-top__dropdown-link">{{ child.TEXT }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</nav>

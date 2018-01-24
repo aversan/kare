@@ -1,0 +1,19 @@
+<div class="tabs-menu">
+	{% if result %}
+		{% for item in result if (item.PARAMS.class != 'exit') %}
+			{% if item.SELECTED %}
+				<div class="tabs-link js-tab-link active" data-tab="{{ item.DATA_TAB }}">
+					<a href="{{ item.LINK }}">
+						<span>{{ item.TEXT }}</span>
+					</a>
+				</div>
+			{% else %}
+				<div class="tabs-link js-tab-link" data-tab="{{ item.DATA_TAB }}">
+					<a href="{{ item.LINK }}">
+						<span>{{ item.TEXT }}</span>
+					</a>
+				</div>
+			{% endif %}
+		{% endfor %}
+	{% endif %}
+</div>

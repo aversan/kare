@@ -1,0 +1,27 @@
+<div id="change_pas" class="js-forgotpasswd">
+	{{ result.ERROR_MESSAGE.MESSAGE }}
+	<div class="text-content text-content--narrow">
+		<form name="bform" method="post" action="/auth/forgot-password/" class="{{ (result.AJAX == 'Y') ? 'js-auth-block' : '' }}">
+			{% if (result.BACKURL | length > 0) %}
+				<input type="hidden" name="backurl" value="{{ result.BACKURL }}" />
+			{% endif %}
+			<input type="hidden" name="AUTH_FORM" value="Y">
+			<input type="hidden" name="TYPE" value="SEND_PWD">
+			<div class="custom-modal__title">Забыли пароль?</div>
+			<p class="gray-text">Если вы забыли пароль, введите ваш номер телефона. Ваш пароль, а так же ваши регистрационные данные будут высланы вам по SMS.</p>
+			<div class="custom-input-block">
+				<input type="tel" name="USER_LOGIN" maxlength="255" class="custom-input js-phone" id="phone" placeholder="Телефон *" required />
+			</div>
+			<input type="hidden" name="send_account_info" value="Y">
+			<div class="two-sides">
+				<div>
+					<button class="butn btn-base" type="submit" value="">Восстановить</button>
+				</div>
+				<div>
+					<span class="base-text">* Обязательно для заполнения</span>
+				</div>
+			</div>
+
+		</form>
+	</div>
+</div>

@@ -1,0 +1,100 @@
+<fieldset>
+  <h4 class="mb-3 mb-sm-4">Контактная информация</h4>
+  <div class="form-group mb-3 mb-sm-4 row">
+    <label class="form-group__label col-12 col-sm-4 col-form-label" for="">Фамилия</label>
+    <div class="col-12 col-sm-8">
+      <input class="form-control" type="text" name="" value="Иванов" id="">
+    </div>
+  </div>
+  <div class="form-group mb-3 mb-sm-4 row">
+    <label class="form-group__label col-12 col-sm-4 col-form-label" for="">Имя</label>
+    <div class="col-12 col-sm-8">
+      <input class="form-control" type="text" name="" value="Иван" id="">
+    </div>
+  </div>
+  <div class="form-group mb-3 mb-sm-4 row">
+    <label class="form-group__label col-12 col-sm-4 col-form-label" for="">Отчество</label>
+    <div class="col-12 col-sm-8">
+      <input class="form-control" type="text" name="" value="Иванович" id="">
+    </div>
+  </div>
+  <div class="form-group mb-3 mb-sm-4 row">
+    <label class="form-group__label col-12 col-sm-4 col-form-label" for="">Телефон</label>
+    <div class="col-12 col-sm-8">
+      <input class="form-control" type="text" name="" value="+7 123 456-78-90" id="" placeholder="+7">
+    </div>
+  </div>
+  <div class="form-group mb-3 mb-sm-4 row">
+    <label class="form-group__label col-12 col-sm-4 col-form-label" for="">Эл. почта</label>
+    <div class="col-12 col-sm-8">
+      <input class="form-control" type="text" name="" value="ivan.ivanovsky@pochta.ru" id="">
+    </div>
+  </div>
+  <div class="form-group mb-3 mb-sm-4 row">
+    <label class="form-group__label col-12 col-sm-4 col-form-label" for="">Способ получения</label>
+    <div class="col-12 col-sm-8">
+      <div class="btn-group" data-toggle="buttons" data-uk-switcher="{ connect: '#switcher-group-1, #switcher-group-2' }">
+        <label class="btn btn-outline-secondary text-uppercase btn_higher btn-sm uk-active" for="reciving-type-1">
+          <input type="radio" name="reciving-type" id="reciving-type-1" autocomplete="off" checked>
+          <span>Доставка</span>
+        </label>
+        <label class="btn btn-outline-secondary text-uppercase btn_higher btn-sm" for="reciving-type-2">
+          <input type="radio" name="reciving-type" id="reciving-type-2" autocomplete="off">
+          <span>Самовывоз</span>
+        </label>
+      </div>
+      <div class="uk-switcher" id="switcher-group-1">
+        <div class="uk-active">
+          <div class="text-gray mt-2 text-nowrap">
+            Стоимость доставки сообщит менеджер
+          </div>
+        </div>
+        <div>
+          <div class="text-gray mt-2 text-nowrap">
+            Бесплатно
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="uk-switcher" id="switcher-group-2">
+    <div class="uk-active">
+      <div class="form-group mb-0 row">
+        <label class="form-group__label col-12 col-sm-4 col-form-label" for="">Адрес</label>
+        <div class="col-12 col-sm-8">
+          <input class="form-control mb-2" type="text" name="" value="" id="" placeholder="Почтовый индекс">
+          <select class="form-control bootstrap-select mb-2" name="" id="">
+            <option value="">Москва</option>
+          </select>
+          <input class="form-control mb-2" type="text" name="" value="" id="" placeholder="Улица">
+          <div class="form-row align-items-center flex-nowrap">
+            <div class="col-7">
+              <input class="form-control" type="text" name="" value="" id="" placeholder="Дом">
+            </div>
+            <div class="col-5">
+              <input class="form-control" type="text" name="" value="" id="" placeholder="Квартира">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="form-group mb-3 mb-sm-4 row">
+        <label class="form-group__label col-12 col-sm-4 col-form-label" for="">Город</label>
+        <div class="col-12 col-sm-8">
+          <select class="form-control bootstrap-select" name="" id="">
+            <option value="">Москва</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group mb-0 row">
+        <label class="form-group__label col-12 col-sm-4 col-form-label" for="">Точка самовывоза</label>
+        <div class="col-12 col-sm-8">
+          <select class="form-control bootstrap-select" name="" id="">
+            <option value="">Нахимовский пр., 24</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>

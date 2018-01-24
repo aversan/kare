@@ -1,0 +1,17 @@
+<section class="catalog-sections">
+	<div class="catalog-sections__wrapper">
+		<h1 class="catalog-sections__title">{{ result.SECTION.NAME }}</h1>
+		<div class="catalog-sections__inner">
+			<ul class="catalog-sections__list">
+				{% for section in result.SECTIONS %}
+					<li class="catalog-section">
+						<a class="catalog-section__link" href="{{ section.SECTION_PAGE_URL }}">
+							<div class="catalog-section__image" style="background-image: url('{{ section.PICTURE.src }}')"></div>
+							<div class="catalog-section__caption">{{ section.NAME }}</div>
+						</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</div>
+	</div>
+</section>

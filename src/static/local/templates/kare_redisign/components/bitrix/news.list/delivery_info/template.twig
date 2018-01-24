@@ -1,0 +1,13 @@
+{% for item in result.ITEMS %}
+	{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+	{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+	{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+	<div class="bordered-block bordered-block--smallbottom delivery-block" id="{{ EDIT_ID }}">
+		<div class="text-content">
+			{% if not loop.last %}
+				<div class="bordered-block__title">{{ item.NAME }}</div>
+			{% endif %}
+			{{ item['~PREVIEW_TEXT'] }}
+		</div>
+	</div>
+{% endfor %}

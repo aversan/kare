@@ -1,0 +1,42 @@
+.form-control {
+  &:disabled,
+  &[readonly] {
+    border-color: $input-disabled-border-color;
+  }
+
+  &-textarea-medium {
+    height: 7.5rem;
+  }
+
+  &-textarea-large {
+    height: 12.5rem;
+  }
+
+  &.is-error {
+    border-color: theme-color('primary');
+  }
+}
+
+.form-group {
+  &__label {
+    &:not(.col-form-label) {
+      line-height: 1;
+    }
+  }
+}
+
+.form-row {
+  margin-right: -4px;
+  margin-left: -4px;
+
+  & > .col,
+  & > [class*="col-"] {
+    padding-right: 4px;
+    padding-left: 4px;
+  }
+}
+
+.form-control_higher2 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}

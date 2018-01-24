@@ -1,0 +1,260 @@
+.showrooms {
+  margin-bottom: 30px;
+}
+
+.showrooms__wrapper {
+  box-sizing: border-box;
+  max-width: 1390px;
+  padding: 0 30px;
+  margin: 0 auto;
+}
+
+.showrooms__top {
+  padding: 0 0 40px;
+}
+
+.showrooms__title {
+  margin: 0;
+  font-family: 'Ubuntu', 'Arial', sans-serif;
+  font-size: 30px;
+  line-height: 1;
+  font-weight: bold;
+  color: theme-color("gray-dark");
+}
+
+.showroom-filter {
+  position: relative;
+  width: 280px;
+  font-size: 0;
+}
+
+.showroom-filter__text {
+  position: absolute;
+  top: 2px;
+  left: 15px;
+  margin-right: 20px;
+  font-family: 'Ubuntu', 'Arial', sans-serif;
+  font-size: 17px;
+  line-height: 25px;
+  font-weight: 300;
+  color: $black;
+}
+
+.showroom-filter__select {
+  font-family: 'Ubuntu', 'Arial', sans-serif;
+  font-weight: 300;
+  color: theme-color("gray");
+}
+
+.showroom-filter__option {
+  font-family: 'Ubuntu', 'Arial', sans-serif;
+  font-weight: 300;
+  color: theme-color("gray");
+
+  &.active-option {
+    color: theme-color("primary");
+  }
+}
+
+.showrooms__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.showroom-filter__inner {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  height: 40px;
+  padding-left: 15px;
+  border: 1px solid $border-color;
+
+  .selectize-input {
+    line-height: 38px;
+  }
+}
+
+.showrooms__list {
+  font-size: 0;
+}
+
+.showrooms__item-wrap {
+  display: inline-block;
+  vertical-align: top;
+  width: 430px;
+  height: 430px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  &:nth-child(3n) {
+    margin-right: 0;
+  }
+}
+
+.showroom-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.showroom-item-layout {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* display: none; */
+  background: rgba(1, 1, 1, 0.4);
+}
+
+.showroom-item:hover .showroom-item-layout {
+  display: block;
+}
+
+.showroom-item__wrapper {
+  height: 100%;
+  overflow: hidden;
+  background-color: #F8FBFF;
+}
+
+.showroom-item__icon {
+  max-width: 100%;
+  height: auto;
+}
+
+.showroom-item-layout__wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 23px;
+}
+
+.showroom-item-layout__info {
+  margin-top: 10px;
+  margin-left: 12px;
+  font-family: 'Ubuntu', 'Arial', sans-serif;
+  font-size: 17px;
+  line-height: 1;
+  font-weight: bold;
+  color: $white;
+}
+
+.showroom-item-layout__name,
+.showroom-item-layout__city {
+  margin-bottom: 10px;
+}
+
+.showroom-item-layout__btn {
+  width: 190px;
+  height: 40px;
+}
+
+.btn_showroom {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 0 18px;
+  font-family: 'Ubuntu', 'Arial', sans-serif;
+  font-size: 13px;
+  line-height: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $white;
+  background: transparent;
+  border: 1px solid $white;
+  border-radius: 19px;
+
+  &:hover {
+    color: $white;
+    background: theme-color("primary");
+    border-color: theme-color("primary");
+  }
+}
+
+.showrooms-map__wrapper {
+  height: 600px;
+  background: #efefef;
+  margin-bottom: 80px;
+}
+
+@media (max-width: 1899px) {
+  .showrooms__wrapper {
+    max-width: 1200px;
+  }
+
+  .showrooms__item-wrap {
+    width: 366px;
+    height: 366px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .showrooms__bottom {
+    max-width: 768px;
+    margin: 0 auto;
+  }
+
+  .showrooms__item-wrap {
+    width: 340px;
+    height: 340px;
+    margin-right: 26px;
+
+    &:nth-child(3n) {
+      margin-right: 25px;
+    }
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  .showrooms__top {
+    padding: 0 0 40px 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .showrooms__wrapper {
+    padding: 0 20px;
+  }
+
+  .showrooms__bottom {
+    max-width: 280px;
+  }
+
+  .showrooms__filter {
+    margin: 0 auto;
+  }
+
+  .showrooms__item-wrap {
+    width: 280px;
+    height: 280px;
+    margin-right: 0;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  .showrooms__top {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 0 0 40px;
+  }
+
+  .showrooms__title {
+    margin-bottom: 30px;
+    text-align: left;
+  }
+
+  .showroom-filter__inner .selectize-input {
+    &.full, &.active {
+      color: theme-color("gray");
+    }
+  }
+}

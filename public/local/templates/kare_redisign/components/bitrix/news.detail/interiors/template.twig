@@ -1,0 +1,89 @@
+<h1 class="main-catalog__title">{{ result.NAME }}</h1>
+
+<div class="text-content">
+	{{ result.DETAIL_TEXT }}
+</div>
+
+<section class="design design--interior">
+	<div class="design__wrapper">
+		<div class="design__left">
+			<div class="design__poster" style="background: #F8FBFF url({{ result.DETAIL_PICTURE.SRC }}) no-repeat 0 33%/cover;">
+			</div>
+		</div>
+	</div>
+</section>
+<div class="search-results">
+	{% if result.PROPERTIES.CATALOG_ITEMS.VALUE | length > 0 %}
+		{% set catalog = APPLICATION.includeComponent(
+			'bitrix:catalog.section',
+			'news_element',
+			{
+				'SEF_URL_TEMPLATES' : {
+					'sections' : '',
+					'section' : '#SECTION_CODE_PATH#/',
+					'element' : 'p/#ELEMENT_ID#/',
+					'compare' : 'compare.php?action=#ACTION_CODE#',
+					'smart_filter' : '#SECTION_CODE_PATH#/filter/#SMART_FILTER_PATH#/apply/',
+				},
+				'IBLOCK_TYPE' : 'aspro_kshop_catalog',
+				'IBLOCK_ID' : result.CATALOG_IBLOCK_ID,
+				'ELEMENT_SORT_FIELD' : 'ID',
+				'ELEMENT_SORT_ORDER' : 'asc',
+				'FILTER_NAME' : result.FILTER_NAME,
+				'INCLUDE_SUBSECTIONS' : 'Y',
+				'PAGE_ELEMENT_COUNT' : 100,
+				'LINE_ELEMENT_COUNT' : 4,
+				'PROPERTY_CODE' : {
+					'0' :'CML2_LINK'
+				},
+				'BASKET_URL' : '/basket/',
+				'ACTION_VARIABLE' : 'action',
+				'PRODUCT_ID_VARIABLE' : 'id',
+				'PRODUCT_QUANTITY_VARIABLE' : 'quantity',
+				'PRODUCT_PROPS_VARIABLE' : 'prop',
+				'SECTION_ID_VARIABLE' : 'SECTION_ID',
+				'AJAX_MODE' : 'N',
+				'CACHE_TYPE' : 'A',
+				'CACHE_TIME' : 250000,
+				'CACHE_GROUPS' : 'Y',
+				'CACHE_FILTER' : 'N',
+				'HIDE_NOT_AVAILABLE' : 'Y',
+				'SET_TITLE' : 'N',
+				'SET_STATUS_404' : 'N',
+				'PRICE_CODE' : {
+					'0' : "Каре розничная",
+				},
+				'USE_PRICE_COUNT' : 'N',
+				'SHOW_PRICE_COUNT' : 1,
+				'PRICE_VAT_INCLUDE' : 'Y',
+				'USE_PRODUCT_QUANTITY' : 'Y',
+				'CONVERT_CURRENCY' : 'Y',
+				'CURRENCY_ID' : 'ID',
+				'USE_STORE' : 'N',
+				'DISPLAY_WISH_BUTTONS' : 'Y',
+				'DEFAULT_COUNT' : 1,
+				'SEF_FOLDER' : '/catalog/',
+				'USE_FILTER' : 'Y',
+				'SECTION_ID' : '',
+				'SHOW_ALL_WO_SECTION' : 'Y',
+			}
+		) %}
+	{% endif %}
+
+	{% if result.PROPERTIES.GALLERY.VALUE | length > 0 %}
+		<div class="h2">{{ result.PROPERTIES.GALLERY.NAME }}</div>
+		<div class="js-interior-gallery">
+			<div class="gallery-slider gallery-slider--noslider js-gallery-list">
+				{% for key, pic in result.GALLERY.SMALL %}
+					<div rel="gallery" href="{{ result.GALLERY.BIG[key] }}" class="gallery-slider__item js-fancy js-gallery-item" style="background-image:url({{ pic }}); display:none"></div>
+				{% endfor %}
+			</div>
+
+			{% if result.PROPERTIES.GALLERY.VALUE | length > 6 %}
+				<div class="gallery-slider-more">
+					<a href="#" class="inner-link inner-link--base js-gallery-more">Показать еще</a>
+				</div>
+			{% endif %}
+		</div>
+	{% endif %}
+</div>

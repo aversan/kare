@@ -1,0 +1,62 @@
+{% if result is not empty %}
+	{% for item in result.ITEMS %}
+		{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+		{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+		{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+		{% if item.CODE == 'global' %}
+			<div class="global-brand" id="{{ EDIT_ID }}" style="background-image: url({{ item.PREVIEW_PICTURE.SRC }});">
+				<div class="global-brand__header">
+					<a target="_blank" href="{{ item.PROPERTIES.LINK.VALUE }}" class="centered-header">{{ item.NAME}}</a>
+					{{ item['~PREVIEW_TEXT'] }}
+				</div>
+			</div>
+		{% elseif item.CODE == 'delivery' %}
+			<div class="small-container" id="{{ EDIT_ID }}">
+				<div class="two-parts delivery-block">
+					<div>
+						<div class="delivery-car" style="background-image: url({{ item.PREVIEW_PICTURE.SRC }});"></div>
+					</div>
+					<div class="delivery-block__text">
+						<a href="{{ item.PROPERTIES.LINK.VALUE }}" class="lined-header lined-header--black">{{ item.NAME }}</a>
+						{{ item['~PREVIEW_TEXT'] }}
+					</div>
+				</div>
+			</div>
+		{% elseif item.CODE == 'choice' %}
+			<div class="choice" id="{{ EDIT_ID }}" style="background-image: url({{ item.PREVIEW_PICTURE.SRC }});">
+				<div class="pink-trans-block pink-trans-block_white">
+					<div class="pink-trans-block__text pink-trans-block__text_white">
+						<a href="{{ item.PROPERTIES.LINK.VALUE }}" class="lined-header lined-header--pink">{{ item.NAME }}</a>
+						{{ item['~PREVIEW_TEXT'] }}
+					</div>
+				</div>
+			</div>
+		{% elseif item.CODE == 'comfort' %}
+			<div class="small-container" id="{{ EDIT_ID }}">
+				<div class="two-parts comfort-shopping">
+					<div class="comfort-shopping__text">
+						<a href="{{ item.PROPERTIES.LINK.VALUE }}" class="lined-header">{{ item.NAME }}</a>
+						{{ item['~PREVIEW_TEXT'] }}
+					</div>
+					<div class="comfort-shopping__pic" style="background-image: url({{ item.PREVIEW_PICTURE.SRC }});"></div>
+				</div>
+			</div>
+		{% elseif item.CODE == 'warranty' %}
+			<div class="centered-block" id="{{ EDIT_ID }}">
+				<a href="{{ item.PROPERTIES.LINK.VALUE }}" class="centered-header">{{ item.NAME }}</a>
+				<div>
+					{{ item['~PREVIEW_TEXT'] }}
+				</div>
+			</div>
+		{% elseif item.CODE == 'gift' %}
+			<div class="choose-certif-wrap" id="{{ EDIT_ID }}">
+				<div class="choose-certif" style="background-image: url({{ item.PREVIEW_PICTURE.SRC }});">
+					<div class="choose-certif__text">
+						<div class="choose-certif__header">{{ item.NAME }}</div>
+						{{ item['~PREVIEW_TEXT'] }}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endfor %}
+{% endif %}

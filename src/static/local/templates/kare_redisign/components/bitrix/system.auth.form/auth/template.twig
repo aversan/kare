@@ -1,0 +1,41 @@
+<h1>Авторизация</h1>
+<div class="text-content text-content--narrow">
+	<p>Авторизировавшись, вы сможете управлять своими личными данными, следить за состоянием заказов.</p>
+	{% if result.ERROR_MESSAGE is not empty %}
+		<font class="errortext">{{ result.ERROR_MESSAGE.MESSAGE }}</font>
+	{% endif %}
+	<form name="system_auth_form{{ result.RND }}" method="post" target="_top" action="{{ result.AUTH_URL }}" class="js-auth-validate">
+		{% if (result.BACKURL != '') %}
+			<input type="hidden" name="backurl" value="{{ result.BACKURL }}" />
+		{% endif %}
+		<input type="hidden" name="AUTH_FORM" value="Y" />
+		<input type="hidden" name="TYPE" value="AUTH" />
+		{{ bitrix_sessid_post() }}
+		<div class="custom-input-block">
+			<input type="tel" name="USER_LOGIN" maxlength="50" value="{{ result.USER_LOGIN }}" placeholder="Телефон *" class="custom-input js-phone" required />
+		</div>
+		<div class="custom-input-block">
+			<input type="password" name="USER_PASSWORD" placeholder="Пароль*" class="custom-input" required>
+		</div>
+		<div class="custom-input-block">
+			<noindex><a href="/ajax/send_password.php" rel="nofollow" class="js-pass-request">Выслать пароль по sms</a></noindex>
+			<div class="send-pass-msg js-send-pass-msg"></div>
+		</div>
+		<div class="two-sides">
+			<div class="custom-input-block">
+				<input type="submit" value="отправить" name="Login" id="" class="butn btn-base">
+			</div>
+			{% if result.STORE_PASSWORD == 'Y' %}
+				<div class="custom-input-block">
+					<div class="custom-checkbox">
+						<input type="checkbox" name="USER_REMEMBER" id="USER_REMEMBER_frm" checked/>
+						<label for="USER_REMEMBER_frm">
+							Запомнить меня
+						</label>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</form>
+
+</div>

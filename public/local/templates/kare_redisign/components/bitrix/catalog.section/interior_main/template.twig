@@ -1,0 +1,51 @@
+<section class="design design--main">
+	<div class="design__wrapper">
+		<div class="design__left">
+			<div class="design__poster">
+				{% for item in result.ITEMS %}
+					<div class="product-marker product-marker_{{ item.MARKER }}">
+						<div class="product-marker-popup">
+							<div class="product-marker-popup__wrapper">
+								<a class="product-marker-popup__icon" href="{{ item.DETAIL_PAGE_URL }}">
+									<img src="{{ (item.PICTURE.SMALL.src is not empty) ? item.PICTURE.SMALL.src : constant(SITE_TEMPLATE_PATH) ~ '/images/no_photo_big.png' }}" alt="{{ item.NAME }}" class="product-marker-popup__image">
+								</a>
+								<a class="product-marker-popup__link" href="{{ item.DETAIL_PAGE_URL }}">{{ item.NAME }}</a> <span class="product-marker-popup__price">{{ item.MIN_PRICE.VALUE | number_format(0, '', '')}} <span class="rub"><span class="text">р</span></span></span>
+								<div class="product-marker-popup__btn js-catalog-buttons">
+									<a title="Перейти в корзину"
+									   class="basket-button basket-button_in-cart js-in-basket-btn {{ item.ADDED ? '' : 'hidden' }}"
+									   rel="nofollow" href="/basket/" data-item="{{ item.ID }}">
+										<div class="icon-wrapper icon-wrapper_like">
+											{{ getSvg('ic-cart', 'icon icon_basket icon_white') }}
+										</div>
+									</a>
+									<a title="Добавить в корзину"
+									   class="basket-button basket-button_to-cart js-to-basket js-to-basket-btn {{ item.ADDED ? 'hidden' : '' }}"
+									   rel="nofollow" href="/ajax/item.php"
+									   onclick="ga('send', 'event', 'Button1', 'Buttonclick12');" data-type="basket" data-item="22072">
+										<div class="icon-wrapper icon-wrapper_like">
+											{{ getSvg('ic-cart', 'icon icon_basket icon_white') }}
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="design__right">
+			<div class="design-arrow">
+				<div class="icon-wrapper" href="/">
+					{{ getSvg('ic-arrow-left', 'icon icon_arrow icon_blue') }}
+				</div>
+			</div>
+			<div class="design__info">
+				<h3 class="design__title">Интерьерное решение</h3>
+				<p class="design__note">
+					Даже небольшую комнату можно обставить с полным комфортом, используя компактную дизайнерскую мебель.
+				</p>
+				<a href="/company/interiors/" class="design__btn btn btn_blue">Смотреть интерьеры</a>
+			</div>
+		</div>
+	</div>
+</section>

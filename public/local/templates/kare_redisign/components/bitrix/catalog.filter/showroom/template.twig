@@ -1,0 +1,12 @@
+<div class="showroom-filter">
+	<div class="showroom-filter__inner">
+		<select class="showroom-filter__select js-city-select" name="city" id="showroom-city">
+			{% for item in result.CUSTOM_LIST %}
+				<option value="{{ item.VALUE }}" {{ ( item.SELECTED ) ? 'selected' }} class="showroom-filter__option active-option">{{loop.first ? 'Выбрать город' : item.NAME}}</option>
+			{% endfor %}
+		</select>
+	</div>
+</div>
+{% if (params.SHOW_BUTTON == 'Y') %}
+	<a class="btn btn_go-to-showroom js-go-to-showroom" href="{{ params.PAGE }}">Перейти к шоу-румам</a>
+{% endif %}

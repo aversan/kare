@@ -1,0 +1,183 @@
+.btn {
+  overflow: hidden;
+  max-width: 100%;
+  cursor: pointer;
+
+  &.disabled,
+  &:disabled {
+    opacity: .6;
+    cursor: default;
+  }
+
+  &.text-uppercase {
+    font-weight: 500;
+
+    &:not(.btn-sm) {
+      font-size: .8125rem;
+      line-height: 1.75;
+    }
+  }
+
+  &__icon {
+    &:first-child {
+      margin-left: -.25rem;
+    }
+
+    &:last-child {
+      margin-right: -.25rem;
+    }
+  }
+
+  &_icon {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+
+    .btn__icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      &:first-child {
+        margin-left: 0;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &_as-label {
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &_higher {
+    padding: 0.75rem 1.5rem;
+
+    &.btn-sm.text-uppercase {
+      line-height: 1.6;
+    }
+
+    &.btn_icon {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  &_higher2 {
+    padding: 0.75rem 1.5rem;
+
+    &.btn-sm.text-uppercase {
+      line-height: 1.7;
+    }
+
+    &.btn_icon {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
+  &_circle-fill {
+    border-radius: 100px;
+    background-color: $gray-400;
+  }
+}
+
+.btn-outline-secondary {
+  color: $gray-700;
+  background-color: $white;
+
+  &:hover,
+  &:focus {
+    border-color: $gray-500;
+    background-color: $white;
+    color: $gray-700;
+  }
+
+  &.disabled,
+  &:disabled {
+    background-color: $white;
+    border-color: theme-color("primary");
+    color: theme-color("primary");
+  }
+
+  &_checked,
+  &.active,
+  &.uk-active {
+    &,
+    &:hover,
+    &:focus {
+      background-color: $blue;
+      color: $gray-700;
+    }
+  }
+}
+
+.btn_up {
+  height: 48px;
+  background-color: rgba($gray-700, 0.05);
+  color: $gray-600;
+  padding: .75rem 1.5rem;
+
+  &:hover,
+  &:focus {
+    color: $gray-600;
+  }
+}
+
+.btn-width-xsmall {
+  min-width: 100px;
+}
+
+.btn-width-small {
+  min-width: 160px;
+}
+
+.btn-width-medium {
+  min-width: 180px;
+}
+
+.btn-width-large {
+  min-width: 220px;
+}
+
+.btn-xs {
+  @include button-size($input-btn-padding-y-xs, $input-btn-padding-x-xs, $font-size-xs, $input-btn-line-height-xs, $btn-border-radius);
+
+  &.text-uppercase {
+    font-weight: normal;
+  }
+}
+
+.btn-checkbox {
+  &__input {
+    &:checked ~ .btn__icon.icon_triangle {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.basket-button {
+  &.btn-outline-secondary {
+    &.added {
+      border-color: theme-color("primary");
+    }
+  }
+
+  .icon_like-black {
+    & ~ .icon {
+      display: none;
+    }
+  }
+
+  &.added .icon_like-black {
+    display: none;
+
+    & ~ .icon {
+      display: inline-block;
+    }
+  }
+}

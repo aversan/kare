@@ -1,0 +1,54 @@
+.container-fluid {
+  padding-left: $grid-gutter-width;
+  padding-right: $grid-gutter-width;
+}
+
+.container-max-width {
+  max-width: 1272px;
+}
+
+.col-side {
+  flex: 0 0 305px;
+  max-width: 305px;
+}
+
+.col-sm-side {
+  @include media-breakpoint-up(sm) {
+    flex: 0 0 305px;
+    max-width: 305px;
+  }
+}
+
+.col-md-side {
+  @include media-breakpoint-up(md) {
+    flex: 0 0 305px;
+    max-width: 305px;
+  }
+}
+
+.col-lg-side {
+  @include media-breakpoint-up(lg) {
+    flex: 0 0 305px;
+    max-width: 305px;
+  }
+}
+
+.col-2-4 {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+
+.col-lg-2-4 {
+  @include media-breakpoint-up(lg) {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}
+
+
+.col-md-2-4 {
+  @include media-breakpoint-up(md) {
+    flex: 0 0 20%;
+    max-width: 20%;
+  }
+}

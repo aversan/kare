@@ -1,0 +1,21 @@
+<div class="showrooms__bottom">
+	<div class="showrooms__list">
+		{% for item in result.ITEMS %}
+			<div class="showrooms__item-wrap" id="{{ item.EDIT_ID }}">
+				<article class="showroom-item">
+					<div class="showroom-item__wrapper">
+						<img class="showroom-item__icon" src="{{ item.PREVIEW_PICTURE.src }}" alt="фото">
+					</div>
+					<div class="showroom-item-layout">
+						<div class="showroom-item-layout__wrapper">
+							<span class="showroom-item-layout__city">{{ item.PROPERTIES.CITY.VALUE }}</span>
+							<div class="showroom-item-layout__btn">
+								<a class="btn btn_showroom" href="{{ item.DETAIL_PAGE_URL }}"> Перейти к шоу-руму</a>
+							</div>
+						</div>
+					</div>
+				</article>
+			</div>
+		{% endfor %}
+	</div>
+</div>

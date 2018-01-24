@@ -1,0 +1,12 @@
+<h4 class="mb-3">Ваш заказ</h4>
+<div class="swiper-container swiper-container-vertical product-slider-container product-slider-container-vertical">
+  <div class="swiper-wrapper product-slider-wrapper">
+    {% for i in [1,2] -%}
+    {% if loop.index <= 2 %}
+    <div class="swiper-slide product-slider-slide">
+      {% include "_checkout/catalog-card-order.html" %}
+    </div>
+    {% endif %}
+    {%- endfor %}
+  </div>
+</div>

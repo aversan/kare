@@ -1,0 +1,25 @@
+<div class="bordered-block bordered-block--smallbottom">
+	<div class="text-content">
+		{{ result.DESCRIPTION }}
+		<ul class="accordion js-accordion">
+			{% for item in result.ITEMS %}
+				{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+				{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+				{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+				<li id="{{ EDIT_ID }}">
+					<button type="button" class="toggle js-accordion-btn"><span>{{ item.NAME }}</span></button>
+					<div class="inner js-accordion-text">
+						{% for prop in item.PROPERTIES %}
+							{% if prop.VALUE is not empty %}
+								<div class="pink-header">{{ prop.DESCRIPTION }}</div>
+								<div class="text-block--small delivery-block">
+									{{ prop['~VALUE'].TEXT }}
+								</div>
+							{% endif %}
+						{% endfor %}
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</div>
+</div>

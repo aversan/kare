@@ -1,0 +1,29 @@
+<form action="{{ constant('SITE_DIR') ~ 'auth/forgot-password/' }}" method="post">
+	{% if result.BACKURL is not empty %}
+		<input type="hidden" name="backurl" value="{{ result.BACKURL }}">
+	{% endif %}
+	<input type="hidden" name="AUTH_FORM" value="Y">
+	<input type="hidden" name="TYPE" value="SEND_PWD">
+	<div class="custom-modal__title">Забыли пароль?</div>
+	<p class="gray-text">Если вы забыли пароль, введите ваш номер телефона. Ваш пароль, а так же ваши регистрационные данные будут высланы вам по SMS.</p>
+	<div class="custom-input-block">
+		<input type="tel" name="phone" id="phone" placeholder="Телефон *" class="custom-input" required>
+		<input type="hidden" name="USER_LOGIN"  maxlength="255" id="login">
+	</div>
+	<div class="two-sides">
+		<div>
+			<input type="submit" value="Восстановить" name="send_account_info" id="" class="butn btn-base">
+		</div>
+		<div>
+			<span class="base-text">* Обязательно для заполнения</span>
+		</div>
+	</div>
+</form>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#phone').keyup(function() {
+			var q = $(this).val().replace(/\D+/g, '');
+			$('#login').val(q);
+		})
+	})
+</script>

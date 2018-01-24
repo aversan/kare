@@ -1,0 +1,69 @@
+
+<div class="basket-popup js-basket-popup" data-header-info="{{ result.JSON }}">
+	<div class="basket-popup__close js-close-popup">
+		{{ getSvg('close2', 'icon icon_close2') }}
+	</div>
+	<h1 class="basket-popup__title">В корзину добавлено</h1>
+	<table class="basket-popup__table">
+	{% for item in result.RESULT_ITEMS %}
+		<tr class="basket-popup__row">
+			<td class="basket-popup__td basket-popup__td_delete">
+				<a class="js-popup-delete-item" href="/ajax/item.php?action=delete&id={{ item.ID }}" data-item="{{ item.PRODUCT_ID }}">
+					{{ getSvg('close2', 'icon icon_close2') }}
+				</a>
+			</td>
+			<td class="basket-popup__td basket-popup__td_img">
+				<a href="{{ item.DETAIL_PAGE_URL }}">
+				{% if item.PHOTO is not empty %}
+					<img src="{{ item.PHOTO }}" alt="{{ item.NAME }}">
+				{% else %}
+					<img src="{{ constant("SITE_TEMPLATE_PATH") }}/images/no_photo_small.png" alt="{{ item.NAME }}">
+				{% endif %}
+				</a>
+			</td>
+			<td class="basket-popup__td basket-popup__td_name">
+				<a href="{{ item.DETAIL_PAGE_URL }}">{{ item.NAME }}
+				</a>
+				<div class="store js-stores">
+					{% if item.STORES is not empty %}
+						<span class="store__title">Наличие на складе:</span>
+						<ul class="store__list js-stores-list">
+							{% for store in item.STORES %}
+								<li class="store__item {{ (loop.index <= 2) ? '' : 'js-stores-hidden hidden' }}">
+									{{ store.STORE_ADDR }} <span class="store__value">({{ store.AMOUNT }} шт.)</span>
+								</li>
+							{% endfor %}
+						</ul>
+						{% if item.STORES | length > 3 %}
+							<div class="store__more js-show-more-stores">
+								<span class="js-more-btn-text">Другие склады</span>
+								<div class="icon-wrapper icon-wrapper_arrow">
+									{{ getSvg('ic-arrow-left', 'icon icon_arrow')}}
+								</div>
+							</div>
+						{% endif %}
+					{% else %}
+						<span class="store__title">Срок откгрузки при заказе сегодня: </span>
+						<span class="store__value">{{ item.AVAILABLE_DATE }}</span>
+					{% endif %}
+				</div>
+			</td>
+			<td class="basket-popup__td basket-popup__td_amount">× {{ item.QUANTITY }}</td>
+			<td class="basket-popup__td basket-popup__td_price">{{ item.PRICE }} Р</td>
+			<td class="basket-popup__td basket-popup__td_sum">{{ item.PRICE * item.QUANTITY }} Р</td>
+		</tr>
+	{% endfor %}
+	</table>
+	<div class="basket-popup__total">
+	{% if result.LEAST_ITEMS > 0 %}
+		<a class="basket-popup__total-count" href="/basket/">Еще {{ result.LEAST_ITEMS }} товара в корзине
+		{{ getSvg('ic-arrow-left', 'icon icon_arrow')}}
+		</a>
+	{% endif %}
+	<span class="basket-popup__total-sum">Итого: <span>{{ result.allSum_FORMATED }}</span></span>
+	</div>
+	<div class="basket-popup__bottom cf">
+		<a class="basket-popup__link basket-popup__link_left" href="/basket/">Перейти в корзину</a>
+		<a class="basket-popup__link basket-popup__link_right js-close-popup" href="#">Продолжить покупки</a>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+		<div class="tab-content js-tab-content active" data-tab="change-pas">
+			<div class="text-content">
+				<div class="bordered-block bordered-block--ind">
+					<div class="bordered-block__title bordered-block__title--person">Сменить пароль</div>
+					<div class="bordered-block__form bordered-block__form-left">
+						<div class="js-form-msg-block" style="display: none">
+							{% if result.strProfileError | length > 0 %}
+								<h3 class="js-form-msg"> {{ result.strProfileError }}</h3>
+							{% else %}
+								<h3 class="js-form-msg">Пароль успешно изменен!</h3>
+							{% endif %}
+						</div>
+						<form name="form1" method="post" action="{{ result.FORM_TARGET }}" id="change_password" enctype="multipart/form-data" class="js-change-pass-form" data-ajax="{{ result.FORM_TARGET }}">
+							{{ bitrix_sessid_post() }}
+							<input type="hidden" name="LOGIN" maxlength="50" value="{{ result.arUser.LOGIN }}">
+							<input type="hidden" name="EMAIL" maxlength="50" placeholder="name@company.ru" value="{{ result.arUser.EMAIL }}">
+							<input type="hidden" name="lang" value="{{ constant('LANG') }}">
+							<input type="hidden" name="ID" value="{{ result.ID }}">
+							<input type="hidden" name="save" value="Y">
+							<div class="custom-input-block">
+								<input type="password" name="NEW_PASSWORD" maxlength="50" value="" id='pass' autocomplete="off" placeholder="Новый пароль *" class="custom-input bx-auth-input" required="">
+							</div>
+							<div class="custom-input-block">
+								<input type="password" name="NEW_PASSWORD_CONFIRM" placeholder="Подтвердить пароль *" class="custom-input" required="" maxlength="50" value="" autocomplete="off">
+							</div>
+							<input type="submit" name="save" id="" value="сохранить" class="butn btn-base">
+						</form>
+					</div>
+					<a href="{{ result.LOGOUT_LINK }}" class="exit exit-link">Выйти</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,141 @@
+.p-footer {
+  background: $blue-light;
+  border-top: 1px solid $gray-300;
+  font-family: $font-family-alt;
+  padding-top: 43px;
+  padding-bottom: 40px;
+  overflow: hidden;
+
+  @include media-breakpoint-down(sm) {
+    padding-top: 48px;
+    border-top-width: 0;
+  }
+
+  @include media-breakpoint-down(xs) {
+    padding-bottom: 32px;
+  }
+
+  &__logo {
+    opacity: .3;
+
+    &.icon_logo {
+      width: 131px;
+      height: 23px;
+
+      @include media-breakpoint-down(sm) {
+        width: 100px;
+        height: 18px;
+      }
+
+      @include media-breakpoint-down(xs) {
+        width: 100%;
+      }
+
+      svg {
+        width: 131px;
+        height: 131px;
+
+        @include media-breakpoint-down(sm) {
+          width: 100px;
+          height: 100px;
+        }
+      }
+    }
+  }
+
+  &__contacts {
+    line-height: 1;
+
+    &-phone-number {
+      font-size: 1rem;
+    }
+
+    &-action {
+      font-size: .75rem;
+      opacity: .75;
+    }
+  }
+
+  &__extra-nav {
+    margin-top: -5px;
+    margin-left: -$nav-link-padding-x;
+    margin-right: -$nav-link-padding-x;
+  }
+
+  &__nav-wrapper {
+    margin-left: -$nav-link-padding-x;
+    margin-right: -$nav-link-padding-x;
+  }
+
+  &__nav {
+    font-size: $typo-font-size-xs;
+    line-height: 1.1;
+  }
+
+  &__social {
+    &-icon {
+      opacity: .5;
+    }
+  }
+
+  &__payment {
+    &-icon {
+      opacity: .3;
+
+      &.icon_mc {
+        width: 40px;
+        height: 31px;
+
+        svg {
+          width: 40px;
+          height: 40px;
+        }
+      }
+
+      &.icon_visa {
+        width: 59px;
+        height: 18px;
+
+        svg {
+          width: 59px;
+          height: 59px;
+        }
+      }
+    }
+  }
+
+  &__col-left {
+    @include media-breakpoint-up(md) {
+      flex: 0 0 22%;
+      max-width: 22%;
+    }
+  }
+
+  &__col-center {
+    @include media-breakpoint-up(md) {
+      flex: 0 0 78%;
+      max-width: 78%;
+    }
+
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 68.5%;
+      max-width: 68.5%;
+    }
+  }
+
+  &__up {
+    @include media-breakpoint-down(sm) {
+      margin-top: -48px;
+    }
+  }
+
+  &__copyright {
+    @include media-breakpoint-down(xs) {
+      max-width: 186px;
+    }
+
+    &.typo-xs {
+      line-height: 20px;
+    }
+  }
+}

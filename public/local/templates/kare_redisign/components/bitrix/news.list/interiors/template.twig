@@ -1,0 +1,16 @@
+<div class="js-interiors-wrapper">
+	<div class="js-interiors-list">
+		{% for item in result.ITEMS %}
+			{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+			{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+			{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+			<a href="{{ item.DETAIL_PAGE_URL }}" class="interior" style="background-image:url({{ item.PREVIEW_PICTURE.SRC }});" id="{{ EDIT_ID }}">
+				<span class="interior__title">{{ item.NAME }}</span>
+				<span class="simple-btn interior__btn">перейти к интерьеру</span>
+			</a>
+		{% endfor %}
+	</div>
+	<div class="interiors-more">
+		<a class="js-interiors-more" href="{{ result.NAV.nextPageUrl }}" data-current="{{ result.NAV.curPage }}" data-total="{{ result.NAV.totalPages }}">Показать еще</a>
+	</div>
+</div>

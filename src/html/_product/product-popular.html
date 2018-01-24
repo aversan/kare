@@ -1,0 +1,30 @@
+<section class="product-viewed" data-module="product-slider">
+	<header class="d-flex flex-column flex-sm-row flex-nowrap align-items-sm-end product-header mb-3 mb-sm-4">
+		<h3 class="mb-0">Популярные товары</h3>
+		<a class="typo-sm text-gray mt-2 mt-sm-0 ml-sm-3 text-nowrap" href="">Все товары</a>
+		<div class="spacer"></div>
+		<div class="product-header__buttons text-nowrap ml-4 d-none d-md-block">
+			<div class="btn btn_icon btn_circle-fill js-swiper-prev">
+				<span class="icon icon_md icon_chevron-left icon_white btn__icon">
+					{{ sprite('chevron-left') }}
+				</span>
+			</div>
+			<div class="btn btn_icon btn_circle-fill js-swiper-next">
+				<span class="icon icon_md icon_chevron-right icon_white btn__icon">
+					{{ sprite('chevron-right') }}
+				</span>
+			</div>
+		</div>
+	</header>
+	<div class="swiper-container product-slider-container js-swiper-container">
+		<div class="swiper-wrapper product-slider-wrapper">
+			{% for i in [1,2,3,4,5,6,7,8] -%}
+			{% if loop.index <= 8 %}
+			<div class="swiper-slide product-slider-slide">
+				{% include "_catalog/catalog-card-small.html" %}
+			</div>
+			{% endif %}
+			{%- endfor %}
+		</div>
+	</div>
+</section>

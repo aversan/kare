@@ -1,0 +1,39 @@
+{% extends 'layouts/application.html' %}
+
+{% block content %}
+<div class="container-fluid">
+  {% include "_catalog/catalog-breadcrumb-2.html" %}
+</div>
+<div class="divider"></div>
+<div class="container-fluid container-max-width">
+  <h1 class="catalog-title mb-4 mb-sm-3">Диваны и кресла</h1>
+  {% include "_catalog/catalog-category.html" %}
+  <div class="row">
+    <div class="col col-12 col-md-side">
+      {% include "_catalog/catalog-filter.html" %}
+    </div>
+    <div class="col col-section">
+      <div class="catalog-container">
+        {% include "_catalog/catalog-toolbar-2.html" %}
+        <div class="row catalog-list-row">
+          {% for i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] -%}
+          {% if loop.index <= 16 %}
+          <div class="col-6 col-md-4 catalog-list-col d-flex">
+            {% include "_catalog/catalog-card.html" %}
+          </div>
+          {% endif %}
+          {%- endfor %}
+        </div>
+        {% include "_catalog/catalog-footer.html" %}
+      </div>
+    </div>
+  </div>
+  <div class="divider-large"></div>
+  {% include "_product/product-viewed.html" %}
+  <div class="divider-large"></div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  {% include "_catalog/catalog-scripts.html" %}
+{% endblock %}

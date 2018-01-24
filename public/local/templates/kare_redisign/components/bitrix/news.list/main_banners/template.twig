@@ -1,0 +1,16 @@
+{% if result.ITEMS is not empty %}
+	<div class="main-slider-wrap">
+		<article class="main-slider js-main-slider">
+			{% for item in result.ITEMS %}
+				{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK) %}
+				{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK) %}
+				{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+				<div id="{{ EDIT_ID }}" class="main-slider__slide">
+					<a class="main-slider__link" href="{{ item.DISPLAY_PROPERTIES.BANNER_LINK.VALUE }}">
+						<div class="main-slider__image" style="background: url('{{ item.PREVIEW_PICTURE.SRC }}') no-repeat center/ cover;"></div>
+					</a>
+				</div>
+			{% endfor %}
+		</article>
+	</div>
+{% endif %}

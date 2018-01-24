@@ -1,0 +1,47 @@
+{% set user = result.arUser %}
+		<div class="tab-content js-tab-content active" data-tab="personal-data">
+			<div class="text-content">
+				<div class="bordered-block bordered-block--ind">
+					<div class="bordered-block__title bordered-block__title--person">Персональные данные</div>
+					<div class="bordered-block__form personal-change js-personal-change">
+						<div class="js-form-msg-block" style="display: none">
+							{% if result.strProfileError | length > 0 %}
+								<h3 class="js-form-msg"> {{ result.strProfileError }}</h3>
+							{% else %}
+								<h3 class="js-form-msg">Ваши данные успешно изменены!</h3>
+							{% endif %}
+						</div>
+						<form method="post" name="form1" class="main js-personal-change-form" action="{{ result.FORM_TARGET }}?" data-ajax="{{ result.FORM_TARGET }}?" enctype="multipart/form-data">
+							{{ bitrix_sessid_post() }}
+							<input type="hidden" name="LOGIN" maxlength="50" value="{{ result.arUser.LOGIN }}">
+							<input type="hidden" name="lang" value="{{ constant('LANG') }}">
+							<input type="hidden" name="ID" value="{{ result.ID }}">
+							<input type="hidden" name="save" value="Y">
+							<div class="custom-input-block">
+								<span class="custom-input-block__name js-personal-data-name">{{ user.LAST_NAME }} {{ user.NAME }} {{ user.SECOND_NAME }}</span>
+							</div>
+							<div class="custom-input-block">
+								<input value="{{ user.LAST_NAME }}" type="text" name="LAST_NAME" maxlength="50" id="" placeholder="Ваша фамилия *" class="custom-input custom-input-name js-personal-data-name-input" required>
+							</div>
+							<div class="custom-input-block">
+								<input value="{{ user.NAME }}" type="text" name="NAME" maxlength="50" id="" placeholder="Ваше имя *" class="custom-input custom-input-name js-personal-data-name-input" required>
+							</div>
+							<div class="custom-input-block">
+								<input value="{{ user.SECOND_NAME }}" type="text" name="SECOND_NAME" maxlength="50" id="" placeholder="Ваше отчество *" class="custom-input custom-input-name js-personal-data-name-input" required>
+							</div>
+							<div class="custom-input-block">
+								<input value="{{ user.EMAIL }}" type="email" name="EMAIL" maxlength="50" id="" placeholder="Email *" class="custom-input" required>
+							</div>
+							<div class="custom-input-block">
+								<input value="{{ user.PERSONAL_PHONE }}" type="tel" name="PERSONAL_PHONE" maxlength="255" id="" placeholder="Телефон *" class="custom-input js-phone" required>
+							</div>
+							<button type="button" class="butn btn-base personal-change__btn js-change-btn">Изменить</button>
+							<input type="submit" name="save" id="" value="сохранить" class="butn btn-base personal-change__save js-personal-save">
+						</form>
+					</div>
+					<a href="{{ result.LOGOUT_LINK }}" class="exit exit-link">Выйти</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

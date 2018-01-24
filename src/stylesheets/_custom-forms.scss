@@ -1,0 +1,26 @@
+.custom-control-input {
+  &:not(:checked) ~ .custom-control-indicator {
+    border: 1px solid $gray-400;
+  }
+
+  .custom-radio &:checked ~ .custom-control-indicator {
+    color: $custom-control-indicator-radio-checked-color;
+    background-color: $custom-control-indicator-radio-checked-bg;
+    border: 1px solid $custom-control-indicator-radio-checked-color;
+    width: $custom-control-indicator-size + .125rem;
+    height: $custom-control-indicator-size + .125rem;
+  }
+
+  &:disabled {
+    ~ .custom-control-indicator {
+      border: 1px solid $custom-control-indicator-disabled-border;
+    }
+  }
+}
+
+.custom-control-sm {
+  font-size: .8125rem;
+  line-height: 1.5384;
+  padding-top: 3px;
+  padding-bottom: 3px;
+}

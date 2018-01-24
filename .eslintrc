@@ -1,0 +1,38 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "airbnb"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "globals": {
+    "document": true,
+    "window": true
+  },
+  "rules": {
+    "no-debugger": 1,
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "max-len": [
+      "error",
+      120,
+      2,
+      {
+        "ignoreUrls": true,
+        "ignoreComments": false,
+        "ignoreRegExpLiterals": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true
+      }
+    ],
+    "no-confusing-arrow": 0,
+    "import/no-extraneous-dependencies": 0,
+    "react/sort-comp": 0
+  },
+  "env": {
+    "es6": true
+  }
+}

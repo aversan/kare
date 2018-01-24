@@ -1,0 +1,12 @@
+<div class="text-content">
+	<ul class="accordion js-accordion">
+		{% for item in result.ITEMS %}
+			<li>
+				<button type="button" class="toggle js-accordion-btn"><span>{{ item.NAME }}</span></button>
+				<div class="inner js-accordion-text">
+					<div>{{ item.DETAIL_TEXT }}</div>
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+</div>

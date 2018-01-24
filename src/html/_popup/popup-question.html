@@ -1,0 +1,48 @@
+<!--<div class="popup popup-width-small">-->
+<div class="popup popup-width-small show" style="z-index: 3000; margin-left: -250px; top: 50px; display: block;">
+    <div class="popup-wrap">
+        <h3 class="popup-title mb-2">Задать вопрос</h3>
+        <div class="typo-sm text-muted mb-4">Ответим на любые вопросы по товару или работе магазина</div>
+        <a class="jqmClose popup-close" href="#">
+          <span class="icon icon_md icon_close-black icon_black-muted">
+            {{ sprite('close-black') }}
+          </span>
+        </a>
+        <form>
+            <div class="form-group mb-4">
+              <label class="d-inline-block form-group__label mb-2" for="">Имя</label>
+              <div class="form-field">
+                <input class="form-control form-field__input" type="text" name="" value="" id="" placeholder="Иван Иванов" required="">
+                <span class="form-field__action form-field__action_icon">
+                  <span class="icon icon_sm icon_close-black">
+                    {{ sprite('close-black') }}
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label class="d-inline-block form-group__label mb-2" for="">Эл. почта</label>
+              <div class="form-field">
+                <input class="form-control form-field__input" type="email" name="" value="" id="" placeholder="ivan@pochta.ru" required="">
+                <span class="form-field__action form-field__action_icon">
+                    <span class="icon icon_sm icon_close-black">
+                      {{ sprite('close-black') }}
+                    </span>
+                  </span>
+              </div>
+            </div>
+            <div class="form-group mb-4">
+              <label class="custom-control custom-checkbox custom-control-sm" for="">
+                <input class="custom-control-input js-personal-data" type="checkbox" name="" id="" checked>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description text-muted">Даю согласие на обработку персональных данных и соглашаюсь с
+                  <a class="text-primary" href="/help/dogovor-oferty/" target="_blank">правилами безопасности</a>
+                </span>
+              </label>
+            </div>
+            <div class="form-group mb-2">
+              <button class="btn btn-primary btn-block text-uppercase" type="submit">Отправить</button>
+            </div>
+        </form>
+    </div>
+</div>

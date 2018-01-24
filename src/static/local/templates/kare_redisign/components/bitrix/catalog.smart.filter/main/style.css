@@ -1,0 +1,13 @@
+
+.bx_filter_vertical .bx_ui_slider_track_values{margin:13px 0 0;position:relative;}
+.bx_filter_vertical .bx_ui_slider_track_values input{overflow:hidden;font-size:13px;color:#454545;width:83px;padding:4px 8px 5px;background:#eeeeee;border:1px solid #cfcfcf;
+-webkit-border-radius: 1px;
+-moz-border-radius: 1px;
+border-radius: 1px;}
+.bx_filter_vertical .bx_ui_slider_track{position:relative;margin:19px 8px 11px;background:#e4e4e4;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;}
+.bx_filter_vertical .bx_ui_slider_track_values .delimetr{display:inline-block;vertical-align:middle;margin:0 2px;height:1px;background:#d1d1d1;width:12px;}
+.bx_filter_vertical .bx_ui_slider_track .bx_ui_slider_range, .bx_filter_vertical .bx_ui_slider_track .ui-slider-range {position:relative;display:block;height:4px;background:#da3939;}
+.bx_filter_vertical .bx_ui_slider_track .bx_ui_slider_handle, .bx_filter_vertical .bx_ui_slider_track .ui-slider-handle{position:absolute;top:-8px;left:0;margin:0 0 0 -10px;display:block;width:20px;height:20px;}

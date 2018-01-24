@@ -1,0 +1,124 @@
+<div class="cart__table-overflow">
+	<table class="history-table">
+		<thead class="history-table__head">
+		<div class="history-table__tr">
+			<td class="history-table__td">
+				{{ getMessage('STPOL_ORDER_NUMBER') }}
+			</td>
+			<td class="history-table__td">
+				{{ getMessage('STPOL_ORDER_DATE') }}
+			</td>
+			<td class="history-table__td">
+				{{ getMessage('STPOL_ORDER_QUANTITY') }}
+			</td>
+			<td class="history-table__td">
+				{{ getMessage('STPOL_ORDER_SUMM') }}
+			</td>
+			<td class="history-table__td">
+				{{ getMessage('STPOL_ORDER_PAY') }}
+			</td>
+			<td class="history-table__td">
+				{{ getMessage('SPOL_T_STATUS') }}
+			</td>
+			<td class="history-table__td"></td>
+		</div>
+		</thead>
+		<tbody class="history-table__body">
+		{% for order in result.ORDERS %}
+			<tr class="history-table__tr">
+				<td class="history-table__td">
+					<span class="history-table__num js-collapse-btn"><span>Заказ №{{ order.ORDER.ID }}</span></span>
+				</td>
+				<td class="history-table__td">
+					{{ order.DATE }}
+				</td>
+				<td class="history-table__td">
+					{{ order.BASKET_ITEMS_COUNT }}
+				</td>
+				<td class="history-table__td">
+					{{ order.ORDER.FORMATED_PRICE }}
+				</td>
+				<td class="history-table__td">
+					<span class="history-table_status-bad">
+						{{ order.ORDER.PAYED == 'Y' ? getMessage('SPOL_T_PAYED') : getMessage('SPOL_T_NOT_PAYED') }}
+					</span>
+				</td>
+				<td class="history-table__td">
+					<span class="history-table_status-norm">
+						{% if order.ORDER.CANCELED == 'Y' %}
+							{{ getMessage('SPOL_T_CANCELED') }}
+						{% elseif order.ORDER.STATUS_ID %}
+							{% for key, status in result.INFO.STATUS if key == order.ORDER.STATUS_ID %}
+								{{ status.NAME }}
+							{% endfor %}
+						{% endif %}
+					</span>
+				</td>
+				<td class="history-table__td">
+					{% if not (order.ORDER.CANCELED == 'Y' or order.ORDER.PAYED == 'Y') %}
+						<a href="{{ order.ORDER.URL_TO_DETAIL ~ '?payment=Y' }}" class="butn btn-base butn-center">Оплатить</a>
+					{% endif %}
+				</td>
+			</tr>
+			<tr class="hidden-row">
+				<td class="" colspan="7">
+					<div class="history-table__hidden">
+						<div class="history-inner">
+							<div class="history-inner__tr">
+								<div class="history-inner__td">Товар</div>
+								<div class="history-inner__td">Цена</div>
+								<div class="history-inner__td">Количество</div>
+								<div class="history-inner__td">Сумма</div>
+							</div>
+							{% for item in order.BASKET_ITEMS %}
+								<div class="history-inner__tr">
+									<div class="history-inner__td">
+										<a href="{{ item.DETAIL_PAGE_URL }}">{{ item.NAME }}</a>
+									</div>
+									<div class="history-inner__td">{{ item.FORMATTED_PRICE }}</div>
+									<div class="history-inner__td">{{ item.QUANTITY }}</div>
+									<div class="history-inner__td">{{ item.FORMATTED_TOTAL_PRICE }}</div>
+								</div>
+							{% endfor %}
+						</div>
+						<div class="history-inner-ctrl">
+							<div class="history-inner-total">
+								<b>Товаров на сумму:</b> {{ order.ORDER.FORMATTED_BASKET_PRICE }}
+							</div>
+							<div class="history-inner-total">
+								<b>Доставка:</b> {{ order.ORDER.FORMATTED_PRICE_DELIVERY }}
+							</div>
+							<div class="history-inner-total">
+								<b>Итого:</b> {{ order.ORDER.FORMATED_PRICE }}
+							</div>
+							<div class="history-inner-btn">
+								<a href="{{ order.ORDER.URL_TO_DETAIL }}" class="butn btn-base butn-center">подробно</a>
+								{# <a href="{{ order.ORDER.URL_TO_COPY }}" class="butn btn-base butn-center">повторить заказ</a> #}
+								<button type="button" class="butn btn-gray butn-center js-cancel" {{ ((order.ORDER.CANCELED == 'Y') or (order.ORDER.PAYED == 'Y') or (order.ORDER.STATUS_ID == 'C')) ? 'disabled' }}>отменить заказ</button>
+								{% if (order.ORDER.OrderDetails) %}
+									<a href="{{ order.ORDER.OrderDetails.SRC }}" class="butn btn-base butn-center" target="_blank" download>Скачать спецификацию к заказу</a>
+								{% endif %}
+							</div>
+							{% if not ((order.ORDER.CANCELED == 'Y') or (order.ORDER.PAYED == 'Y') or (order.ORDER.STATUS_ID == 'C')) %}
+								<div class="history-cancel js-cancel-block">
+									<form action="{{ constant('POST_FORM_ACTION_URI') }}" method="post" class="js-need-sessid">
+										{{ bitrix_sessid_post() }}
+										<input type="hidden" name="CANCEL" value="Y">
+										<input type="hidden" name="ID" value="{{ order.ORDER.ID }}">
+										<p>Вы уверены что хотите отменить заказ №{{ order.ORDER.ID }}?</p>
+										<p><b>Отмена заказа не обратима!</b></p>
+										<div class="custom-input-block">
+											<textarea placeholder="Укажите, пожалуйста, причину отмены заказа" name="REASON_CANCELED" class="custom-input"></textarea>
+										</div>
+										<input type="submit" value="Отменить заказ" name="action" id="" class="butn btn-base butn-center">
+									</form>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>

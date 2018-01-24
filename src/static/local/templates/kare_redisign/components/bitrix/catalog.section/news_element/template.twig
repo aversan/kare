@@ -1,0 +1,75 @@
+{% if result.ITEMS | length > 0 %}
+
+	<div class="h2">Товары интерьера</div>
+	<div class="js-interior-items-gallery">
+		<ul class="catalog-list js-gallery-list gallery-slider--noslider">
+			{% for item in result.ITEMS %}
+				{% set EditAction = template.AddEditAction(item.ID, item.EDIT_LINK, result.strElementEdit) %}
+				{% set DeleteAction = template.AddDeleteAction(item.ID, item.DELETE_LINK, result.strElementDelete, result.arElementDeleteParams) %}
+				{% set EDIT_ID = template.GetEditAreaId(item.ID) %}
+				<li class="catalog-list__item catalog-list__item_catalog-page js-gallery-item" id="{{ EDIT_ID }}" style="display:none;">
+					<article class="catalog-item catalog-item_base " id="bx_3966226736_19448">
+						<div class="catalog-item__inner catalog-item__inner_higher cf">
+							<div class="catalog-item__icon">
+								<a class="catalog-item__link" href="{{ item.DETAIL_PAGE_URL }}">
+									<img src="{{ (item.PROPERTIES.MAIN_PHOTO.VALUE is not empty) ? item.PROPERTIES.MAIN_PHOTO.VALUE : constant('SITE_TEMPLATE_PATH') ~ '/images/no_photo_big.png'}}" alt="{{ item.NAME }}" title="{{ item.NAME }}">
+								</a>
+							</div>
+							<div class="ribbons">
+							</div>
+							<div class="catalog-item__info">
+								<div class="catalog-item__top-info">
+									<span class="catalog-item__article">{{ item.PROPERTIES.CML2_ARTICLE.NAME }}: <span>{{ item.PROPERTIES.CML2_ARTICLE.VALUE }}</span></span>
+									<a class="catalog-item__name" href="{{ item.DETAIL_PAGE_URL }}"><span>{{ item.NAME }}</span></a>
+								</div>
+								<div class="catalog-item__bottom-info">
+									<div class="catalog-item__cost">
+										<div class="catalog-item__price">
+											<div class="price">{{ item.MIN_PRICE.DISCOUNT_VALUE }}<span class="rub"><span class="text">р.</span></span></div>
+										</div>
+									</div>
+									<div class="catalog-buttons cf js-catalog-buttons">
+										<!--noindex-->
+										{% if params.DISPLAY_WISH_BUTTONS != 'N' %}
+											<div class="catalog-buttons__item">
+												<a title="Добавить в WishList" class="basket-button js-to-basket js-to-wish-btn {{ item.DELAY ? 'added' : '' }}" rel="nofollow" href="/ajax/item.php"  data-item="{{ item.ID }}" data-type="wish">
+													<div class="icon-wrapper icon-wrapper_like">
+														{{ getSvg('ic-like', 'icon icon_like icon_white') }}
+													</div>
+												</a>
+											</div>
+										{% endif %}
+										<div class="catalog-buttons__item">
+											<a title="Перейти в корзину"
+												class="basket-button basket-button_in-cart js-in-basket-btn {{ item.ADDED ? '' : 'hidden' }}"
+												rel="nofollow" href="/basket/" data-item="{{ item.ID }}">В корзине
+												<div class="icon-wrapper icon-wrapper_like">
+													{{ getSvg('ic-cart', 'icon icon_basket icon_white') }}
+												</div>
+											</a>
+											<a title="Добавить в корзину"
+												class="basket-button basket-button_to-cart js-to-basket js-to-basket-btn {{ item.ADDED ? 'hidden' : '' }}"
+												rel="nofollow" href="/ajax/item.php"
+												onclick="ga('send', 'event', 'Button1', 'Buttonclick12');" data-type="basket" data-item="{{ item.ID }}">В корзину
+												<div class="icon-wrapper icon-wrapper_like">
+													{{ getSvg('ic-cart', 'icon icon_basket icon_white') }}
+												</div>
+											</a>
+										</div>
+										<!--/noindex-->
+									</div>
+									<div class="catalog-item__availability catalog-item__availability_available">{{ (item.PROPERTIES.AVAILABLE.VALUE_XML_ID == 'Y') ? 'В наличии' : 'Срок отгрузки: ' ~ item.PROPERTIES.VOZMOZHNAYA_DATA_OTGRUZKI_IZ_MYUNKHENA.VALUE}}</div>
+								</div>
+							</div>
+						</div>
+					</article>
+				</li>
+			{% endfor %}
+		</ul>
+		{% if result.ITEMS | length > 6 %}
+			<div class="gallery-slider-more">
+				<a href="#" class="inner-link inner-link--base js-gallery-more">Показать еще</a>
+			</div>
+		{% endif %}
+	</div>
+{% endif %}

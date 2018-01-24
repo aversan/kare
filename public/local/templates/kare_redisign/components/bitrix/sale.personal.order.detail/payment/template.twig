@@ -1,0 +1,129 @@
+<div class="bx_my_order_switch">
+	<a class="bx_mo_link" href="{{ result.URL_TO_LIST }}">{{ langMessages.SPOD_CUR_ORDERS }}</a>
+</div>
+
+<div class="bx_order_list">
+
+	{% if result.ERROR_MESSAGE | length > 0 %}
+		{{ result.ERROR_MESSAGE }}
+	{% else %}
+		<div class="two-cols">
+			<div class="two-cols__left">
+				<div class="bordered-block bordered-block--ind">
+					<form action="">
+						<div class="bordered-block__title bordered-block__title--pay">Оплатить заказ</div>
+						<div class="custom-input-block">
+							<div class="custom-checkbox">
+								<input name="pay_now" class="js-radio-toggle" value="now" id="pay_now_now" data-action="close" data-target=".list-link-btn" type="radio" checked><label for="pay_now_now">Оплатить на сайте</label>
+							</div>
+						</div>
+						<div class="custom-input-block custom-input-block--ind">
+							<div class="custom-checkbox">
+								<input name="pay_now" value="later" id="pay_now_later" type="radio" class="js-radio-toggle" data-action="open" data-target=".list-link-btn"><label for="pay_now_later">Завершить и оплатить позже</label>
+							</div>
+						</div>
+						<a class="butn btn-base list-link-btn" href="{{ result.URL_TO_LIST }}" style="display: none;">Завершить</a>
+					</form>
+				</div>
+				<div class="bordered-block bordered-block--ind">
+					<div class="bordered-block__title bordered-block__title--bonus">Ваши бонусы</div>
+					<form action="" data-ajax-url="{{ result.AJAX_BONUS_PAYMENT }}" class="js-bonus-payment">
+						<input type="hidden" name="ID" value="{{ result.XML_ID }}">
+						<input type="hidden" name="PaidSum" value="0">
+						<input type="hidden" name="TransactionID" value="">
+						<input type="hidden" name="uID" value="{{ result.USER.XML_ID }}">
+						<input type="hidden" name="FriendlyBonusDirection" value="">
+						<div class="js-bonus-balance" data-ajax-url="{{ result.AJAX_GET_BONUS_INFO }}"></div>
+						<p class="gray-text gray-text-bonus">Вы можете использовать их для оплаты этого заказа</p>
+						<div class="pay-block__bonus pay-block__bonus-line">
+							<span>Использовать</span>
+							<input type="text" name="BonusPaidSum" id="bonus" class="custom-input">
+							<span>бонусов</span>
+							<button class="butn btn-base" type="submit">Применить</button>
+						</div>
+					</form>
+				</div>
+				<div class="bordered-block bordered-block--ind">
+					<div class="bordered-block__title bordered-block__title--payway">Способы оплаты</div>
+					<div class="payments">
+						<div class="payments__item">
+							<div class="payments__title">​Банковские карты</div>
+							<img src="{{ result.SITE_TEMPLATE_PATH }}/images/order/payments/mir.svg" width="40" height="11" alt="Мир">
+							<img src="{{ result.SITE_TEMPLATE_PATH }}/images/order/payments/visa.svg" width="40" height="12" alt="Visa">
+							<img src="{{ result.SITE_TEMPLATE_PATH }}/images/order/payments/maestro.svg" width="33" height="20" alt="Maestro">
+							<img src="{{ result.SITE_TEMPLATE_PATH }}/images/order/payments/mc.svg" width="33" height="20" alt="MC">
+						</div>
+						<div class="payments__item">
+							<div class="payments__title">Электронные деньги</div>
+							<img src="{{ result.SITE_TEMPLATE_PATH }}/images/order/payments/yandex.svg" width="18" height="24" alt="Yandex">
+							<img src="{{ result.SITE_TEMPLATE_PATH }}/images/order/payments/webmoney.svg" width="20" height="20" alt="Webmoney">
+						</div>
+						<div class="payments__item">
+							<div class="payments__title">​Интернет-банкинг</div>
+							<img src="{{ result.SITE_TEMPLATE_PATH }}/images/order/payments/alfa.svg" width="18" height="26" alt="Альфа-банк">
+							<img src="{{ result.SITE_TEMPLATE_PATH }}/images/order/payments/psb.svg" width="20" height="20" alt="PSB">
+						</div>
+						<div class="payments__item">
+							<div class="payments__title">Наличные</div>
+							<img src="{{ result.SITE_TEMPLATE_PATH }}/images/order/payments/cash-new.svg" width="22" height="20" alt="">
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="two-cols__right">
+				<div class="bordered-block total-block">
+					<div class="total-block__head two-sides">
+						<div>
+							Ваш заказ
+						</div>
+						<div>
+							<a href="#">Изменить</a>
+						</div>
+					</div>
+					<div class="two-sides">
+						<div>Товаров ({{ result.BASKET|length }})</div>
+						<div>{{ result.PRICE_FORMATED }}</div>
+					</div>
+					<div class="two-sides">
+						<div>Доставка</div>
+						<div>
+							<span class="gray-text">Cумма доставки рассчитывается менеджером</span>
+						</div>
+					</div>
+					<div class="two-sides total-block__sum">
+						<div>Итого к оплате:</div>
+						<div>{{ result.FINAL_PRICE }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        {% if (result.PAY_SYSTEM.NEW_WINDOW == "Y") %}
+		<script language="JavaScript">
+            window.open('{{ result.PAYMENT_LINK }}');
+		</script>
+		Если окно с платежной информацией не открылось автоматически, нажмите на ссылку <a href="{{ result.PAYMENT_LINK }}" target="_blank">Оплатить заказ</a>.
+        {% if (result.PDF_EXISTS) %}
+		Для того, чтобы скачать счет в формате pdf, нажмите на ссылку <a href="{{ result.PAYMENT_LINK_PDF }}" target="_blank">Скачать счет</a>.
+		{% endif %}
+			{% else %}
+				{{ result.PAY_BUTTON }}
+		{% endif %}
+		{% if (result.PAY_BUTTON) %}
+		{% else %}
+			<script language="JavaScript">
+				var l = document.getElementById('idBonusPaymentEnd');
+				l.click();
+			</script>
+			<div class="pay-block__bonus pay-block__bonus-line" style="display: none;">
+				<form action="" method="post" name="formBonusPaymentEnd" id="formBonusPaymentEnd">
+					<input type="submit" name="bonusPaymentEnd" value="завершить оплату" class="butn btn-base" id="idBonusPaymentEnd">
+				</form>
+			</div>
+		{% endif %}
+		<br><br><br>
+	{% endif %}
+</div>
+<script>
+	var requestBonusInfo = {{ result.REQUEST_BONUS_INFO }}
+</script>

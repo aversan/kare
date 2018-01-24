@@ -1,0 +1,44 @@
+{% extends 'layouts/application.html' %}
+
+{% block content %}
+<div class="divider"></div>
+<div class="container-fluid container-max-width">
+  <h1 class="mb-4 mb-sm-6">Оформление заказа</h1>
+  <div class="checkout-container-max-width-large">
+    <div class="row no-gutters checkout-row flex-md-nowrap">
+      <div class="col col-12 col-sm-6 checkout-col-left">
+        <div class="checkout-box border px-5 pt-4 pb-5 mb-5 mb-sm-0">
+          <h3 class="mb-3 pb-1">Вход</h3>
+          <div class="form-group mb-4">
+            <label class="form-group__label mb-2" for="">Телефон</label>
+            <input class="form-control" type="text" name="" value="" id="" placeholder="+7">
+          </div>
+          <div class="form-group mb-3">
+            <label class="form-group__label mb-2" for="">Пароль</label>
+            <input class="form-control" type="password" name="" value="" id="">
+          </div>
+          <div class="typo-sm text-gray py-1 mb-3">Напомнить пароль по СМС</div>
+          <div class="form-group mb-0">
+            <button class="btn btn-primary text-uppercase btn-width-medium btn-sm btn_higher" type="submit">Продолжить</button>
+          </div>
+        </div>
+      </div>
+      <div class="col col-12 col-sm-6 checkout-col-right">
+        <div class="form-group mb-5">
+          <button class="btn btn-outline-primary text-uppercase btn-width-large btn-sm btn_higher">Регистрация</button>
+          <div class="typo-sm text-muted mt-2">Вам станет доступно отслеживание состояния заказов, личный кабинет и другие новые возможности</div>
+        </div>
+        <div class="form-group mb-0">
+          <button class="btn btn-outline-secondary text-uppercase btn-width-large btn-sm btn_higher">Быстрый заказ</button>
+          <div class="typo-sm text-muted mt-2">Без регистрации. Укажите  телефон и мы перезвоним, чтобы согласовать детали</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divider-large"></div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+  {% include "_checkout/checkout-scripts.html" %}
+{% endblock %}

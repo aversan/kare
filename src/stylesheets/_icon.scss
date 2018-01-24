@@ -1,0 +1,217 @@
+.icon {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  line-height: 1;
+  overflow: hidden;
+  position: relative;
+
+  & svg {
+    fill: currentColor;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &_search,
+  &_search svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &_like,
+  &_like svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  &_basket,
+  &_basket svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  &_phone,
+  &_phone svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  &_user,
+  &_user svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  &_star,
+  &_star svg {
+    width: 12px;
+    height: 12px;
+  }
+
+  &_hoverable {
+    cursor: pointer;
+  }
+
+  &_white {
+    &,
+    & svg {
+      color: $white;
+    }
+  }
+
+  &_black {
+    &,
+    & svg {
+      color: $black;
+    }
+
+    &.icon_chevron-left svg {
+      stroke: $black;
+    }
+
+    &.icon_chevron-right svg {
+      stroke: $black;
+    }
+  }
+
+  &_white {
+    &,
+    & svg {
+      color: $white;
+    }
+
+    &.icon_chevron-left svg {
+      stroke: $white;
+    }
+
+    &.icon_chevron-right svg {
+      stroke: $white;
+    }
+  }
+
+  &_black-muted {
+    &,
+    & svg {
+      color: $black;
+    }
+
+    & {
+      opacity: .5;
+    }
+  }
+
+  &_sm {
+    &,
+    & svg {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+    }
+  }
+
+  &_md {
+    &,
+    & svg {
+      width: 24px;
+      height: 24px;
+      min-width: 24px;
+    }
+
+    &.icon_vk svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    &.icon_facebook svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    &.icon_instagram svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  &_lg {
+    &,
+    & svg {
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+    }
+
+    &.icon_circle {
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      &.icon_vk svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      &.icon_facebook svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  &_triangle,
+  &_triangle-down {
+    &::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+  }
+
+  &_triangle {
+    &::before {
+      border-width: 0 4px 4px 4px;
+      border-color: transparent transparent theme-color("gray-dark") transparent;
+    }
+
+    &.icon_primary {
+      &::before {
+        border-color: transparent transparent theme-color("primary") transparent;
+      }
+    }
+  }
+
+  &_triangle-down {
+    &::before {
+      border-width: 4px 4px 0 4px;
+      border-color: theme-color("gray-dark") transparent transparent transparent;
+    }
+
+    &.icon_primary {
+      &::before {
+        border-color: theme-color("primary") transparent transparent transparent;
+      }
+    }
+  }
+
+  &_circle {
+    border: 1px solid theme-color("secondary");
+    border-radius: 100px;
+
+    &:hover {
+      border-color: $gray-500;
+
+      .icon_black-muted {
+        opacity: .7;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+<div class="product-card__buttons d-flex flex-column flex-sm-row flex-nowrap mt-3">
+	<div class="buttons d-flex flex-nowrap">
+		<a class="btn btn-primary btn-sm btn_higher text-uppercase basket-button basket-button_to-cart js-to-basket js-to-basket-btn" title="Добавить в корзину" rel="nofollow" href="/ajax/item.php" data-item="23910" data-quantity="1" alt="" onclick="ga('send', 'event', 'Button1', 'Buttonclick1');" data-type="basket">В корзину</a>
+		<a class="btn btn-primary btn-sm btn-higher text-uppercase basket-button basket-button_in-cart js-in-basket-btn hidden" title="Перейти в корзину" rel="nofollow" href="/basket/" data-item="23910">В корзине</a>
+	</div>
+	<div class="buttons d-flex flex-nowrap mt-3 mt-sm-0">
+		<a class="btn btn-outline-secondary btn-sm btn_higher text-uppercase basket-button fast-order" rel="nofollow" href="#" data-item="23910" data-type="fast-order" title="Быстрый заказ" onclick="fastOrderClick(23910, this); return false;">Быстрый заказ</a>
+		<a class="btn btn-outline-secondary btn-sm btn_higher text-uppercase btn_icon basket-button js-to-basket js-to-wish-btn" href="/ajax/item.php" rel="nofollow" data-item="23910" data-quantity="1" data-type="wish">
+	      <span class="icon icon_md icon_like-black icon_black-muted btn__icon">
+	        {{ sprite('like-black') }}
+	      </span>
+        <span class="icon icon_md icon_like-red btn__icon">
+	        {{ sprite('like-red') }}
+	      </span>
+		</a>
+	</div>
+</div>

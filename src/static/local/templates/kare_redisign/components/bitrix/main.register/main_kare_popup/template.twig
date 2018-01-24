@@ -1,0 +1,72 @@
+{% if result.ERRORS is not empty %}
+	{% for error in result.ERRORS %}
+		{{ error }}
+	{% endfor %}
+{% else %}
+	<form method="post" action="{{ constant('POST_FORM_ACTION_URI') }}">
+		{% if result.BACKURL is not empty %}
+			<input type="hidden" name="backurl" value="{{ result.BACKURL }}">
+		{% endif %}
+		<div class="custom-modal__title">Регистрация</div>
+		<div class="custom-input-block">
+			<input
+					type="text"
+					name="REGISTER[NAME]"
+					value="{{ result.VALUES.NAME }}"
+					placeholder="Ваше имя *"
+					class="custom-input"
+					required
+			>
+		</div>
+		<div class="custom-input-block">
+			<input
+					type="tel"
+					name="REGISTER[LOGIN]"
+					value="{{ result.VALUES.LOGIN }}"
+					placeholder="Телефон *"
+					class="custom-input"
+					required
+			>
+		</div>
+		<div class="custom-input-block">
+			<input
+					type="email"
+					name="REGISTER[EMAIL]"
+					value="{{ result.VALUES.EMAIL }}"
+					placeholder="Email *"
+					class="custom-input"
+					required
+			>
+		</div>
+		<div class="custom-input-block">
+			<input
+					type="password"
+					name="REGISTER[PASSWORD]"
+					value="{{ result.VALUES.PASSWORD }}"
+					placeholder="Пароль *"
+					class="custom-input"
+					autocomplete="off"
+					required
+			>
+		</div>
+		<div class="custom-input-block">
+			<input
+					type="password"
+					name="REGISTER[CONFIRM_PASSWORD]"
+					value="{{ result.VALUES.CONFIRM_PASSWORD }}"
+					placeholder="Подтверждение пароля *"
+					class="custom-input"
+					autocomplete="off"
+					required
+			>
+		</div>
+		<div class="two-sides">
+			<div>
+				<input type="submit" value="отправить" name="register_submit_button" class="butn btn-base">
+			</div>
+			<div>
+				<span class="base-text">* Обязательно для заполнения</span>
+			</div>
+		</div>
+	</form>
+{% endif %}
